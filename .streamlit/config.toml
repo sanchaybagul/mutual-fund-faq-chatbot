@@ -1,0 +1,7 @@
+[theme]
+base = "light"
+primaryColor = "#1F4FD1"   # trust blue: toggles, focus rings, spinners
+font = "sans serif"
+
+[browser]
+gatherUsageStats = false

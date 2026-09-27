@@ -1,0 +1,193 @@
+# HDFC Mutual Fund Facts Assistant (RAG Chatbot)
+
+A small retrieval-augmented chatbot that answers **factual** questions about five HDFC Mutual Fund schemes, including:
+
+- expense ratio, exit load and minimum SIP;
+- ELSS lock-in, riskometer and benchmark;
+- fund managers and AUM.
+
+Every answer:
+- is at most 3 sentences long;
+- cites exactly one source link;
+- shows when the sources were last updated.
+
+The bot refuses investment advice and performance comparisons, and blocks any personal data.
+
+> **Facts-only. No investment advice.**
+
+Built as a class demo. See [docs/PRD.md](docs/PRD.md), [docs/architecture.md](docs/architecture.md) and [docs/implementation.md](docs/implementation.md).
+
+## Scope
+
+**AMC:** HDFC Mutual Fund. All schemes are **Direct – Growth** plans. The full list is in [sources.md](sources.md).
+
+| Scheme | Category |
+|---|---|
+| HDFC Large Cap Fund | Large Cap |
+| HDFC Flexi Cap Fund | Flexi Cap |
+| HDFC ELSS Tax Saver Fund | ELSS |
+| HDFC Small Cap Fund | Small Cap |
+| HDFC Balanced Advantage Fund | Hybrid (BAF) |
+
+## How it works
+
+```
+INGESTION (offline)   sources.csv → Load → Parse → Chunk → Embed (MiniLM) → ChromaDB
+QUERY (online)        question → Guardrails → Scheme detection → Retrieve (top-4) → Groq LLM → Post-process → answer + 1 citation
+```
+
+| Stage | Implementation |
+|---|---|
+| Load | `src/loader.py`: fetches each page once and saves HTML + embedded JSON to `data/raw/` |
+| Parse | `src/parser.py`: extracts fields from the page JSON (see [docs/field_map.md](docs/field_map.md)). Return and NAV data is skipped on purpose. |
+| Chunk | `src/chunker.py`: section-aware chunks (see below) |
+| Embed | `sentence-transformers/all-MiniLM-L6-v2` (384 dimensions, runs locally) |
+| Store | ChromaDB, persisted in `data/chroma/` (42 chunks) |
+| Retrieve | `src/retriever.py`: detects the scheme from its name or alias, filters by scheme, and applies a similarity cutoff of 0.25 |
+| Generate | `src/generator.py`: Groq LLM with a strict "answer only from context" prompt |
+| Post-process | `src/postprocess.py`: 3-sentence cap, advice check, citation from chunk metadata (never from the LLM) |
+
+### Chunking strategy
+
+The Groww pages are semi-structured: mostly labelled facts with a few prose sections. We therefore use structure-aware chunks instead of fixed-size ones.
+
+- **One "facts card" per scheme.** It lists all the key fields as `Label: value` lines and answers most questions.
+- **One chunk per section:**
+  - Objective
+  - Overview
+  - Minimum Investment
+  - Exit Load / Stamp Duty / Tax
+  - Riskometer & Benchmark
+  - Fund Management
+  - Fund House & Registrar
+- **Long sections are split** by paragraph, then by sentence, into chunks of at most 200 tokens with a 30-token overlap. This stays under MiniLM's 256-token input limit.
+- **Every chunk is prefixed** with `[<Scheme> – Direct Growth] [<Section>]` and stores its scheme, section, source URL and fetch date.
+
+To browse the stored chunks, run `python -m src.export_chunks`, which writes them to `data/chunks.md`.
+
+### Guardrails (run before retrieval)
+
+| Check | Result |
+|---|---|
+| **PII**: PAN, Aadhaar, phone, email, OTP, account or folio numbers | Blocked. The message is never sent to the LLM and is hidden in the chat. |
+| **Performance**: returns, NAV, CAGR, "performed" | No numbers. The user gets the scheme's page instead. |
+| **Advice**: "should I", best or better, "good for me", recommend | Polite refusal plus a SEBI investor-education link |
+| **Off-topic**: no scheme name and no mutual-fund terms | Scope message |
+| **Scheme-specific question with no scheme named** | Asks which scheme |
+| **Another AMC named** (SBI, Axis…) | "Not found". It is never answered with HDFC data. |
+
+## Setup
+
+Requirements:
+- Python 3.11 or newer (tested on 3.12);
+- a Groq API key (free at [console.groq.com](https://console.groq.com)).
+
+```bash
+cd Mututal_fund_Chatbot
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env               # then add your GROQ_API_KEY
+python -m src.ingest --reset       # builds data/chroma from the saved snapshots
+streamlit run app.py               # opens http://localhost:8501  (add ?theme=dark to start in dark mode)
+```
+
+Useful commands:
+
+| Command | What it does |
+|---|---|
+| `python -m src.ingest --reset --fetch` | Re-download the 5 pages, then rebuild the vector store |
+| `python -m src.retriever "exit load small cap"` | Show retrieved chunks and similarity scores |
+| `python -m src.generator "…"` | Ask one question from the terminal |
+| `python -m src.export_chunks` | Dump all stored chunks to `data/chunks.md` |
+| `python -m scripts.eval_retrieval` | Retrieval eval (hit@1 / hit@4) |
+| `python -m scripts.tune_threshold` | Similarity scores for in-scope and out-of-scope questions |
+| `python -m scripts.make_sample_qa` | Regenerate `sample_qa.md` from live outputs |
+
+### LLM
+
+Answers are generated by **Groq** (`qwen/qwen3.8-27b` by default) in `src/generator.py`. Reasoning is turned off, and temperature is 0.
+
+- **Key:** set `GROQ_API_KEY` in `.env`, which is gitignored (see `.env.example`). Get a key at [console.groq.com](https://console.groq.com).
+- **Model:** set `GROQ_MODEL` in `.env` to use another model, e.g. `openai/gpt-oss-120b`.
+- **Hosting:** on Streamlit Cloud, put `GROQ_API_KEY` under **Secrets**.
+
+## Testing and evaluation
+
+```bash
+pytest                  # all 106 tests (~25 s; the PRD acceptance tests call Groq)
+pytest -m "not llm"     # 102 offline tests (~10 s)
+```
+
+| Check | Result |
+|---|---|
+| PRD §10 acceptance: 10 factual questions across all 5 schemes | **Pass** (≥9/10 required). Every answer has 1 citation and the "Last updated" line, and is at most 3 sentences |
+| Advice / performance / PII / out-of-corpus / other-AMC / UI elements | All pass |
+| Retrieval eval (16 labelled questions) | **hit@1 88%**, **hit@4 100%** |
+| Latency (UI, after warm-up) | About 4 s per answer |
+
+Sample outputs are in [sample_qa.md](sample_qa.md).
+
+## Deliverables
+
+| Deliverable | Location |
+|---|---|
+| Working prototype | `streamlit run app.py` (local). See the demo script below for the ≤3-min video. |
+| Source list (5 URLs) | [sources.md](sources.md), [sources.csv](sources.csv) |
+| README | this file |
+| Sample Q&A | [sample_qa.md](sample_qa.md) |
+| Disclaimer snippet | [DISCLAIMER.md](DISCLAIMER.md) |
+
+### Demo script (about 3 minutes)
+
+| Time | Action | Shows |
+|---|---|---|
+| 0:00 | Open the app | Welcome line, 3 example questions, disclaimer |
+| 0:20 | Click "expense ratio of HDFC Flexi Cap Fund" | Cited answer with its date |
+| 0:40 | "What is the lock-in for tax saver fund?" | Alias handling |
+| 1:00 | "Minimum SIP for HDFC Balanced Advantage Fund?" | Hybrid scheme |
+| 1:20 | "Should I buy HDFC Small Cap?" | Advice refusal with educational link |
+| 1:40 | "Which gave better returns, large cap or flexi cap?" | Performance redirect |
+| 2:00 | "My PAN is ABCDE1234F, what's my balance?" | PII block, message hidden |
+| 2:20 | "What is the exit load?" | Clarify prompt |
+| 2:40 | Terminal: `python -m src.ingest --reset`, then open `data/chunks.md` | The RAG ingestion stages |
+
+## Known limits
+
+- **Point-in-time data.** Expense ratios, AUM and fund managers change. Answers reflect the snapshot date shown in each answer.
+- **Small corpus.** Only 5 scheme pages are ingested, so many valid questions return "not found".
+- **Statement downloads aren't covered.** The scheme pages don't explain how to download a capital-gains statement. That question returns "not found" with a link to hdfcfund.com.
+- **Groww is a distributor, not the AMC.** The brief supplied these URLs. Official AMC, AMFI or SEBI documents (factsheets, KIM/SID) would be stronger sources.
+- **Scraping is fragile.** A change to Groww's page structure could break the parser. The saved snapshots let you rebuild offline.
+- **Guardrails are rule-based.** Cleverly phrased advice requests or unusual PII formats could slip through. The post-LLM advice scan is a second line of defence.
+- **Needs a network connection and a Groq key.** Free-tier rate limits apply.
+- English only.
+
+## Project structure
+
+```
+app.py                 Streamlit UI (layout + state)
+  src/ui.py            theme tokens (light/dark), CSS, HTML components
+sources.csv / .md      corpus registry
+sample_qa.md           demo Q&A (real outputs)
+DISCLAIMER.md          UI disclaimer snippet
+src/
+  config.py            paths, models, thresholds, env / secrets
+  loader.py            fetch + snapshot pages
+  parser.py            JSON/HTML → SchemeDoc
+  chunker.py           section-aware chunking
+  embedder.py          MiniLM embeddings
+  store.py             ChromaDB wrapper
+  ingest.py            Load → Parse → Chunk → Embed → Store
+  export_chunks.py     dump stored chunks to data/chunks.md
+  schemes.py           scheme aliases, other-AMC detection
+  retriever.py         scheme-aware retrieval + threshold
+  guardrails.py        PII / performance / advice / off-topic
+  generator.py         Groq LLM call
+  postprocess.py       answer contract + Response
+  templates.py         fixed refusal / fallback text
+  pipeline.py          answer(question) → Response
+scripts/               eval_retrieval, tune_threshold, make_sample_qa
+tests/                 106 tests (unit, routing, generator, PRD acceptance, UI)
+data/raw/              page snapshots     data/chroma/  vector store
+docs/                  PRD, architecture, implementation plan, field map
+```
