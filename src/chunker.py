@@ -12,7 +12,7 @@ from collections import Counter
 from dataclasses import dataclass
 from functools import lru_cache
 
-from transformers import AutoTokenizer
+from tokenizers import Tokenizer
 
 from src.config import CHUNK_OVERLAP, CHUNK_TOKENS, EMBED_MODEL
 from src.parser import SchemeDoc, parse_all
@@ -44,8 +44,9 @@ class Chunk:
 
 @lru_cache
 def get_tokenizer():
-    tok = AutoTokenizer.from_pretrained(EMBED_MODEL)
-    tok.model_max_length = 10**6  # we count long texts on purpose; silence truncation warnings
+    tok = Tokenizer.from_pretrained(EMBED_MODEL)
+    tok.no_truncation()  # we count long texts on purpose
+    tok.no_padding()
     return tok
 
 

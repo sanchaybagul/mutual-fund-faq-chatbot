@@ -2,7 +2,7 @@
 import streamlit as st
 
 from src import ui
-from src.embedder import get_model
+from src.embedder import embed
 from src.guardrails import contains_pii
 from src.pipeline import answer, scheme_sources
 from src.store import get_collection
@@ -21,7 +21,7 @@ PII_PLACEHOLDER = "Message hidden — it contained personal data"
 @st.cache_resource(show_spinner="Loading knowledge base…")
 def warm_up():
     """Load the embedding model and vector store once per server process."""
-    get_model()
+    embed(["warm up"])  # forces the ONNX model to download/load now, not on the first question
     return get_collection().count()
 
 

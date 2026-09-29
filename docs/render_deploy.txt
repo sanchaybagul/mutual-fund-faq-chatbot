@@ -1,0 +1,66 @@
+DEPLOYING TO RENDER - HDFC MF Facts Assistant
+==============================================
+
+Repo: https://github.com/sanchaybagul/mutual-fund-faq-chatbot
+Service type: Web Service (New + > Web Service > connect the GitHub repo)
+
+
+1. SERVICE SETTINGS
+-------------------
+Name:            mutual-fund-faq-chatbot   (any name)
+Branch:          main
+Runtime:         Python 3
+
+Root Directory:  (leave empty - the app is at the repo root)
+
+Build Command:
+pip install -r requirements.txt
+
+Start Command:
+streamlit run app.py --server.port $PORT --server.address 0.0.0.0 --server.headless true
+
+Health Check Path (under Advanced):
+/_stcore/health
+
+
+2. ENVIRONMENT VARIABLES (Environment tab)
+------------------------------------------
+GROQ_API_KEY     = <your Groq key>   (never commit this to the repo)
+PYTHON_VERSION   = 3.12.13           (the version everything was tested on)
+
+Optional:
+GROQ_MODEL       = qwen/qwen3.8-27b  (default; openai/gpt-oss-120b also works)
+
+
+3. WHY THESE COMMANDS
+---------------------
+Build:  No PyTorch. The MiniLM model runs through Chroma's bundled ONNX build
+        (onnxruntime), which gives identical vectors to sentence-transformers.
+
+Start:  $PORT                   = the port Render assigns to the service
+        0.0.0.0                 = makes the app reachable from outside the container
+        --server.headless true  = stops Streamlit trying to open a browser
+
+
+4. BEFORE YOU DEPLOY
+--------------------
+- Memory: the Free and Starter plans have 512 MB of RAM. The app peaks at ~330 MB
+  while answering (the old PyTorch version used ~660 MB and crashed with a 502 /
+  white screen). If the logs ever show "Out of memory", move to the 2 GB plan.
+
+- Cold starts: free instances sleep after 15 minutes without traffic. The first visit
+  after that takes 30-60 seconds while the app wakes up and loads the model.
+
+- First start: the app downloads the ONNX MiniLM model (~80 MB) into
+  ~/.cache/chroma. This happens again after each restart or deploy.
+
+- No re-ingestion needed: the vector store (data/chroma/) is committed in the repo.
+
+
+5. AFTER DEPLOYING
+------------------
+Live URL looks like:  https://mutual-fund-faq-chatbot.onrender.com
+Dark mode link:       https://mutual-fund-faq-chatbot.onrender.com/?theme=dark
+
+Quick check: open the URL, click an example question, and confirm the answer shows
+a "Source" link and "Last updated from sources".
