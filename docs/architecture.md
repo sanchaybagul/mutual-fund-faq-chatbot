@@ -1,5 +1,7 @@
 # Architecture: Mutual Fund FAQ Assistant (Facts-Only RAG Chatbot)
 
+> **Update 2026-10-02 — corpus revision.** The revised brief asks for 15–25 official AMC/SEBI/AMFI pages and no third-party sources, so the five Groww pages were replaced by 18 official sources (HDFC MF scheme pages, KIMs, factsheet and statement guides; SEBI and AMFI investor-education pages). See [sources.md](../sources.md) and [field_map.md](field_map.md). Sections below that mention Groww describe the original build.
+
 | | |
 |---|---|
 | **Status** | Draft v1 |

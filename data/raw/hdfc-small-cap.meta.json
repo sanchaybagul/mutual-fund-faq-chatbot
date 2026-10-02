@@ -1,9 +1,10 @@
 {
   "slug": "hdfc-small-cap",
-  "url": "https://groww.in/mutual-funds/hdfc-small-cap-fund-direct-growth",
-  "fetched_at": "2026-09-27",
+  "url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-small-cap-fund/direct",
+  "fetched_at": "2026-10-02",
   "status": 200,
+  "format": "html",
   "has_next_data": true,
-  "html_bytes": 496464,
-  "visible_text_chars": 19908
+  "bytes": 185475,
+  "visible_text_chars": 12029
 }

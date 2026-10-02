@@ -9,7 +9,8 @@ PERFORMANCE = ("I don't compute or compare returns. Please refer to the official
                "for performance data.")
 PII_BLOCK = ("Please don't share personal information like PAN, Aadhaar, account numbers, OTPs, "
              "email or phone. I haven't stored your message.")
-OFF_TOPIC = "I can only answer factual questions about 5 HDFC Mutual Fund schemes."
+OFF_TOPIC = ("I can only answer factual questions about 5 HDFC Mutual Fund schemes, HDFC MF statements, "
+             "and basic mutual fund terms.")
 SERVICE_ERROR = "Sorry, the answer service is temporarily unavailable. Please try again shortly."
 
 # Educational link for refusals: SEBI's official investor-education portal.

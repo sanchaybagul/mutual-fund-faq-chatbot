@@ -1,0 +1,10 @@
+{
+  "slug": "hdfc-cas",
+  "url": "https://www.hdfcfund.com/services/consolidated-account-statement",
+  "fetched_at": "2026-10-02",
+  "status": 200,
+  "format": "html",
+  "has_next_data": true,
+  "bytes": 123679,
+  "visible_text_chars": 5686
+}

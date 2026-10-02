@@ -1,0 +1,3157 @@
+{
+  "props": {
+    "menuData": {
+      "data": {
+        "headerMenu": [
+          {
+            "routeConstant": "/explore/mutual-funds",
+            "linkName": "Funds",
+            "linkDescription": null,
+            "linkUrl": "/",
+            "weight": "10",
+            "hasChild": true,
+            "attributes": {
+              "target": "_self",
+              "rel": "/explore/mutual-funds",
+              "class": "menu-product sub-menu mobile-check",
+              "icon_path": null,
+              "is_checked": false,
+              "alt": null
+            },
+            "childrens": [
+              {
+                "routeConstant": "",
+                "linkName": "column-1",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-60",
+                "hasChild": true,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "",
+                  "class": "menu-column-1",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [
+                  {
+                    "routeConstant": "/explore/mutual-funds",
+                    "linkName": "Category",
+                    "linkDescription": null,
+                    "linkUrl": "/",
+                    "weight": "-59",
+                    "hasChild": true,
+                    "attributes": {
+                      "target": "_self",
+                      "rel": "/explore/mutual-funds",
+                      "class": "All-products",
+                      "icon_path": null,
+                      "is_checked": false,
+                      "alt": null
+                    },
+                    "childrens": [
+                      {
+                        "routeConstant": null,
+                        "linkName": "column-1",
+                        "linkDescription": null,
+                        "linkUrl": "/",
+                        "weight": "0",
+                        "hasChild": true,
+                        "attributes": {
+                          "icon_path": null,
+                          "is_checked": false,
+                          "alt": null
+                        },
+                        "childrens": [
+                          {
+                            "routeConstant": "/explore/mutual-funds/equity",
+                            "linkName": "Equity",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "5",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/explore/mutual-funds/equity",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/ProductSolution/Diversified.svg",
+                              "alt": null,
+                              "icon_path": null,
+                              "is_checked": false
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/explore/mutual-funds/debt",
+                            "linkName": "Debt",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "6",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/explore/mutual-funds/debt",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/ProductSolution/ThematicEquity.svg",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/explore/mutual-funds/index",
+                            "linkName": "Index",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "7",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/explore/mutual-funds/index",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/ProductSolution/IndexImage.svg",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/explore/mutual-funds/fund-of-funds",
+                            "linkName": "Fund of Funds",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "8",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/explore/mutual-funds/fund-of-funds",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/ProductSolution/FundofFunds.svg",
+                              "alt": null,
+                              "icon_path": null,
+                              "is_checked": false
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/explore/mutual-funds/tax-saver",
+                            "linkName": "Tax Saver",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "9",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/explore/mutual-funds/tax-saver",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/ProductSolution/HybridImage.svg",
+                              "alt": null,
+                              "icon_path": null,
+                              "is_checked": false
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/explore/mutual-funds/hybrid",
+                            "linkName": "Hybrid",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "10",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/explore/mutual-funds/hybrid",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/ProductSolution/HybridImage.svg",
+                              "alt": null,
+                              "icon_path": null,
+                              "is_checked": false
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/explore/mutual-funds/solution-oriented",
+                            "linkName": "Solution Oriented",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "11",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/explore/mutual-funds/solution-oriented",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/ProductSolution/IncomeSolution.svg",
+                              "alt": null,
+                              "icon_path": null,
+                              "is_checked": false
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/explore/mutual-funds/etf",
+                            "linkName": "ETF",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "12",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/explore/mutual-funds/etf",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/ProductSolution/ETFImage.svg",
+                              "alt": null,
+                              "icon_path": null,
+                              "is_checked": false
+                            },
+                            "childrens": [],
+                            "popular": false
+                          }
+                        ],
+                        "popular": false
+                      }
+                    ],
+                    "popular": false
+                  },
+                  {
+                    "routeConstant": "/explore/mutual-funds",
+                    "linkName": "Goal based solutions",
+                    "linkDescription": null,
+                    "linkUrl": "/",
+                    "weight": "-57",
+                    "hasChild": true,
+                    "attributes": {
+                      "target": "_self",
+                      "rel": "/explore/mutual-funds",
+                      "class": "All-products",
+                      "icon_path": null,
+                      "is_checked": false,
+                      "alt": null
+                    },
+                    "childrens": [
+                      {
+                        "routeConstant": null,
+                        "linkName": "column-1",
+                        "linkDescription": null,
+                        "linkUrl": "/",
+                        "weight": "-57",
+                        "hasChild": true,
+                        "attributes": {
+                          "icon_path": null,
+                          "is_checked": false,
+                          "alt": null
+                        },
+                        "childrens": [
+                          {
+                            "routeConstant": "/explore/mutual-funds/wealth-creation",
+                            "linkName": "Wealth creation",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "-56",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/explore/mutual-funds/wealth-creation",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/ProductSolution/WealthCreation.svg",
+                              "alt": null,
+                              "icon_path": null,
+                              "is_checked": false
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/explore/mutual-funds/tax-savings",
+                            "linkName": "Tax Savings",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "-55",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/explore/mutual-funds/tax-savings",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/ProductSolution/TaxSaving.svg",
+                              "alt": null,
+                              "icon_path": null,
+                              "is_checked": false
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/explore/mutual-funds/children-fund",
+                            "linkName": "Children's Fund",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "-54",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/explore/mutual-funds/children-fund",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/ProductSolution/ChildrensFuns.svg",
+                              "alt": null,
+                              "icon_path": null,
+                              "is_checked": false
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/explore/mutual-funds/retirement-planning",
+                            "linkName": "Retirement Planning",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "-53",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/explore/mutual-funds/retirement-planning",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/ProductSolution/Retirementplanning.svg",
+                              "alt": null,
+                              "icon_path": null,
+                              "is_checked": false
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/explore/mutual-funds/income-solutions",
+                            "linkName": "Income Solutions",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "-52",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/explore/mutual-funds/income-solutions",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/ProductSolution/IncomeSolution.svg",
+                              "alt": null,
+                              "icon_path": null,
+                              "is_checked": false
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/chhotisip",
+                            "linkName": "Chhoti SIP",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "-51",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/chhotisip",
+                              "alt": null,
+                              "icon_path": null,
+                              "is_checked": false
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/explore/mutual-funds",
+                            "linkName": "View all ->",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "-50",
+                            "hasChild": false,
+                            "attributes": {
+                              "rel": "/explore/mutual-funds",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          }
+                        ],
+                        "popular": false
+                      }
+                    ],
+                    "popular": false
+                  },
+                  {
+                    "routeConstant": null,
+                    "linkName": "Fund Related Details",
+                    "linkDescription": null,
+                    "linkUrl": "/",
+                    "weight": "-56",
+                    "hasChild": true,
+                    "attributes": {
+                      "icon_path": null,
+                      "is_checked": false,
+                      "alt": null
+                    },
+                    "childrens": [
+                      {
+                        "routeConstant": null,
+                        "linkName": "column-1",
+                        "linkDescription": null,
+                        "linkUrl": "/",
+                        "weight": "5",
+                        "hasChild": true,
+                        "attributes": {
+                          "icon_path": null,
+                          "is_checked": false,
+                          "alt": null
+                        },
+                        "childrens": [
+                          {
+                            "routeConstant": "/mutual-funds/additional-fund-info",
+                            "linkName": "Additional Fund Information",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "1",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/mutual-funds/additional-fund-info",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/mutual-funds/factsheets",
+                            "linkName": "Factsheet",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "2",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/mutual-funds/factsheets",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/mutual-funds/fund-documents/kim",
+                            "linkName": "Fund Documents",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "3",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/mutual-funds/fund-documents/kim",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/mutual-funds/fund-literature/leaflets",
+                            "linkName": "Fund Literature",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "4",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/mutual-funds/fund-literature/leaflets",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          }
+                        ],
+                        "popular": false
+                      }
+                    ],
+                    "popular": false
+                  }
+                ],
+                "popular": false
+              }
+            ],
+            "popular": false
+          },
+          {
+            "routeConstant": "/learn/blog",
+            "linkName": "Learn",
+            "linkDescription": null,
+            "linkUrl": "/",
+            "weight": "11",
+            "hasChild": true,
+            "attributes": {
+              "target": "_self",
+              "rel": "/learn/blog",
+              "icon_path": null,
+              "is_checked": false,
+              "alt": null
+            },
+            "childrens": [
+              {
+                "routeConstant": null,
+                "linkName": "coloumn-1",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "22",
+                "hasChild": true,
+                "attributes": {
+                  "target": "_self",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [
+                  {
+                    "routeConstant": null,
+                    "linkName": "MF Simplified",
+                    "linkDescription": null,
+                    "linkUrl": "/",
+                    "weight": "10",
+                    "hasChild": true,
+                    "attributes": {
+                      "target": "_self",
+                      "icon_path": null,
+                      "is_checked": false,
+                      "alt": null
+                    },
+                    "childrens": [
+                      {
+                        "routeConstant": null,
+                        "linkName": "coloumn-1",
+                        "linkDescription": null,
+                        "linkUrl": "/",
+                        "weight": "23",
+                        "hasChild": true,
+                        "attributes": {
+                          "target": "_self",
+                          "icon_path": null,
+                          "is_checked": false,
+                          "alt": null
+                        },
+                        "childrens": [
+                          {
+                            "routeConstant": "/learn/blog",
+                            "linkName": "Blog",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "2",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/learn/blog",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/learn/quiz",
+                            "linkName": "Quiz",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "3",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/learn/quiz",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/learn/mf-simplified/videos",
+                            "linkName": "Videos",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "4",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/learn/mf-simplified/videos",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/learn/sip",
+                            "linkName": "Zindagi Ke Liye SIP",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "5",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/learn/sip",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/learners-corner/barniseazadi",
+                            "linkName": "Barni se Azadi",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "6",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/learners-corner/barniseazadi",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/wealthcare-for-doctors",
+                            "linkName": "Wealthcare",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "7",
+                            "hasChild": false,
+                            "attributes": {
+                              "rel": "/wealthcare-for-doctors",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          }
+                        ],
+                        "popular": false
+                      }
+                    ],
+                    "popular": false
+                  },
+                  {
+                    "routeConstant": null,
+                    "linkName": "Macros, Markets and More",
+                    "linkDescription": null,
+                    "linkUrl": "/",
+                    "weight": "11",
+                    "hasChild": true,
+                    "attributes": {
+                      "target": "_self",
+                      "icon_path": null,
+                      "is_checked": false,
+                      "alt": null
+                    },
+                    "childrens": [
+                      {
+                        "routeConstant": null,
+                        "linkName": "coloumn-1",
+                        "linkDescription": null,
+                        "linkUrl": "/",
+                        "weight": "24",
+                        "hasChild": true,
+                        "attributes": {
+                          "target": "_self",
+                          "icon_path": null,
+                          "is_checked": false,
+                          "alt": null
+                        },
+                        "childrens": [
+                          {
+                            "routeConstant": "/learn/macros-markets-more/index-insider",
+                            "linkName": "Index Insider",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "0",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/learn/macros-markets-more/index-insider",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/learn/macros-markets-more/market-review",
+                            "linkName": "Market Review",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "12",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/learn/macros-markets-more/market-review",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/learn/macros-markets-more/monetary-policy",
+                            "linkName": "Monetary Policy",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "13",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/learn/macros-markets-more/monetary-policy",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/learn/macros-markets-more/hdfc-mf-yearbook",
+                            "linkName": "HDFC MF Yearbook",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "14",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/learn/macros-markets-more/hdfc-mf-yearbook",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/learn/macros-markets-more/webinars",
+                            "linkName": "Webinars",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "15",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/learn/macros-markets-more/webinars",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          }
+                        ],
+                        "popular": false
+                      }
+                    ],
+                    "popular": false
+                  },
+                  {
+                    "routeConstant": null,
+                    "linkName": "Deep Dives",
+                    "linkDescription": null,
+                    "linkUrl": "/",
+                    "weight": "12",
+                    "hasChild": true,
+                    "attributes": {
+                      "target": "_self",
+                      "icon_path": null,
+                      "is_checked": false,
+                      "alt": null
+                    },
+                    "childrens": [
+                      {
+                        "routeConstant": null,
+                        "linkName": "coloumn-1",
+                        "linkDescription": null,
+                        "linkUrl": "/",
+                        "weight": "25",
+                        "hasChild": true,
+                        "attributes": {
+                          "target": "_self",
+                          "icon_path": null,
+                          "is_checked": false,
+                          "alt": null
+                        },
+                        "childrens": [
+                          {
+                            "routeConstant": "/learn/deep-dives/tuesday-talking-point",
+                            "linkName": "Tuesday Talking Point",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "16",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/learn/deep-dives/tuesday-talking-point",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/learn/deep-dives/weekend-bytes",
+                            "linkName": "Weekend Bytes",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "17",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/learn/deep-dives/weekend-bytes",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/learn/deep-dives/hdfc-mf-insights",
+                            "linkName": "HDFC MF Insights",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "18",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/learn/deep-dives/hdfc-mf-insights",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/learn/deep-dives/handbooks",
+                            "linkName": "Handbooks",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "19",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/learn/deep-dives/handbooks",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          }
+                        ],
+                        "popular": false
+                      }
+                    ],
+                    "popular": false
+                  },
+                  {
+                    "routeConstant": null,
+                    "linkName": "MD and CEO'S Desk",
+                    "linkDescription": null,
+                    "linkUrl": "/",
+                    "weight": "13",
+                    "hasChild": true,
+                    "attributes": {
+                      "target": "_self",
+                      "icon_path": null,
+                      "is_checked": false,
+                      "alt": null
+                    },
+                    "childrens": [
+                      {
+                        "routeConstant": null,
+                        "linkName": "column-1",
+                        "linkDescription": null,
+                        "linkUrl": "/",
+                        "weight": "26",
+                        "hasChild": true,
+                        "attributes": {
+                          "target": "_self",
+                          "icon_path": null,
+                          "is_checked": false,
+                          "alt": null
+                        },
+                        "childrens": [
+                          {
+                            "routeConstant": "/learn/md-ceo-desk/interviews-and-articles",
+                            "linkName": "Interviews and Articles",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "8",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/learn/md-ceo-desk/interviews-and-articles",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/learn/md-ceo-desk/videos",
+                            "linkName": "Videos",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "9",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/learn/md-ceo-desk/videos",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          }
+                        ],
+                        "popular": false
+                      }
+                    ],
+                    "popular": false
+                  }
+                ],
+                "popular": false
+              }
+            ],
+            "popular": false
+          },
+          {
+            "routeConstant": "/calculators",
+            "linkName": "Calculators",
+            "linkDescription": null,
+            "linkUrl": "/",
+            "weight": "12",
+            "hasChild": true,
+            "attributes": {
+              "target": "_self",
+              "rel": "/calculators",
+              "icon_path": null,
+              "is_checked": false,
+              "alt": null
+            },
+            "childrens": [
+              {
+                "routeConstant": null,
+                "linkName": "coloumn-1",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "9",
+                "hasChild": true,
+                "attributes": {
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [
+                  {
+                    "routeConstant": null,
+                    "linkName": "Category 1",
+                    "linkDescription": null,
+                    "linkUrl": "/",
+                    "weight": "2",
+                    "hasChild": true,
+                    "attributes": {
+                      "target": "_self",
+                      "icon_path": null,
+                      "is_checked": false,
+                      "alt": null
+                    },
+                    "childrens": [
+                      {
+                        "routeConstant": null,
+                        "linkName": "coloumn-1",
+                        "linkDescription": null,
+                        "linkUrl": "/",
+                        "weight": "10",
+                        "hasChild": true,
+                        "attributes": {
+                          "icon_path": null,
+                          "is_checked": false,
+                          "alt": null
+                        },
+                        "childrens": [
+                          {
+                            "routeConstant": "/calculators/sip-calculator",
+                            "linkName": "SIP Calculator",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "1",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/calculators/sip-calculator",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/LeanersCorner/SipCalculator.svg",
+                              "alt": null,
+                              "icon_path": null,
+                              "is_checked": false
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/calculators/swp-calculator",
+                            "linkName": "SWP Calculator",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "2",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/calculators/swp-calculator",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/LeanersCorner/SwapCalculator.svg",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/calculators/step-up-sip-calculator",
+                            "linkName": "Step Up SIP",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "3",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/calculators/step-up-sip-calculator",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/LeanersCorner/TopUpSip.svg",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/calculators/stp-calculator",
+                            "linkName": "STP calculator",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "4",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/calculators/stp-calculator",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/LeanersCorner/StpCalculator.svg",
+                              "alt": null,
+                              "icon_path": null,
+                              "is_checked": false
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/calculators/goal-sip-calculator",
+                            "linkName": "Goal SIP",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "5",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/calculators/goal-sip-calculator",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/LeanersCorner/GoalSip.svg",
+                              "alt": null,
+                              "icon_path": null,
+                              "is_checked": false
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/calculators/inflation-calculator",
+                            "linkName": "Impact of inflation",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "6",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/calculators/inflation-calculator",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/LeanersCorner/ImpactInflation.svg",
+                              "alt": null,
+                              "icon_path": null,
+                              "is_checked": false
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/calculators/present-value-calculator",
+                            "linkName": "Present value",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "7",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/calculators/present-value-calculator",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/LeanersCorner/PresentValue.svg",
+                              "alt": null,
+                              "icon_path": null,
+                              "is_checked": false
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/calculators/retirement-calculator",
+                            "linkName": "Retirement SIP Calculator",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "8",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/calculators/retirement-calculator",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/LeanersCorner/RetirementSip.svg",
+                              "alt": null,
+                              "icon_path": null,
+                              "is_checked": false
+                            },
+                            "childrens": [],
+                            "popular": false
+                          }
+                        ],
+                        "popular": false
+                      }
+                    ],
+                    "popular": false
+                  },
+                  {
+                    "routeConstant": null,
+                    "linkName": "Category 2",
+                    "linkDescription": null,
+                    "linkUrl": "/",
+                    "weight": "3",
+                    "hasChild": true,
+                    "attributes": {
+                      "icon_path": null,
+                      "is_checked": false,
+                      "alt": null
+                    },
+                    "childrens": [
+                      {
+                        "routeConstant": null,
+                        "linkName": "column-1",
+                        "linkDescription": null,
+                        "linkUrl": "/",
+                        "weight": "1",
+                        "hasChild": true,
+                        "attributes": {
+                          "icon_path": null,
+                          "is_checked": false,
+                          "alt": null
+                        },
+                        "childrens": [
+                          {
+                            "routeConstant": "/calculators/cost-of-child-education-calculator",
+                            "linkName": "Cost of child education",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "13",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/calculators/cost-of-child-education-calculator",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/LeanersCorner/ChildEducation.svg",
+                              "alt": null,
+                              "icon_path": null,
+                              "is_checked": false
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/calculators/compound-interest-calculator",
+                            "linkName": "Compound Interest Calculator",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "14",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/calculators/compound-interest-calculator",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/calculators/lumpsum-calculator",
+                            "linkName": "Lumpsum Calculator",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "15",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/calculators/lumpsum-calculator",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/calculators/cagr-calculator",
+                            "linkName": "CAGR Calculator",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "16",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/calculators/cagr-calculator",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/calculators/xirr-calculator",
+                            "linkName": "XIRR Calculator",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "17",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/calculators/xirr-calculator",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/calculators/simple-interest-calculator",
+                            "linkName": "Simple Interest Calculator",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "18",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/calculators/simple-interest-calculator",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/calculators/mutual-fund-returns-calculator",
+                            "linkName": "Mutual Fund Return Calculator",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "19",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/calculators/mutual-fund-returns-calculator",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          }
+                        ],
+                        "popular": false
+                      }
+                    ],
+                    "popular": false
+                  }
+                ],
+                "popular": false
+              }
+            ],
+            "popular": false
+          },
+          {
+            "routeConstant": "/services",
+            "linkName": "Services",
+            "linkDescription": null,
+            "linkUrl": "/",
+            "weight": "14",
+            "hasChild": true,
+            "attributes": {
+              "target": "_self",
+              "rel": "/services",
+              "icon_path": null,
+              "is_checked": false,
+              "alt": null
+            },
+            "childrens": [
+              {
+                "routeConstant": null,
+                "linkName": "column-1",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "18",
+                "hasChild": true,
+                "attributes": {
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [
+                  {
+                    "routeConstant": null,
+                    "linkName": "E-Services",
+                    "linkDescription": null,
+                    "linkUrl": "/",
+                    "weight": "4",
+                    "hasChild": true,
+                    "attributes": {
+                      "target": "_self",
+                      "icon_path": null,
+                      "is_checked": false,
+                      "alt": null
+                    },
+                    "childrens": [
+                      {
+                        "routeConstant": null,
+                        "linkName": "column-1",
+                        "linkDescription": null,
+                        "linkUrl": "/",
+                        "weight": "21",
+                        "hasChild": true,
+                        "attributes": {
+                          "icon_path": null,
+                          "is_checked": false,
+                          "alt": null
+                        },
+                        "childrens": [
+                          {
+                            "routeConstant": "/services/consolidated-account-statement",
+                            "linkName": "Download Statement",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "3",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/services/consolidated-account-statement",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "https://investor-web.hdfcfund.com",
+                            "linkName": "Invest Online",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "4",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "https://investor-web.hdfcfund.com",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/services/invest-via-whatsapp",
+                            "linkName": "Invest via WhatsApp",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "5",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/services/invest-via-whatsapp",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/services/missed-call-facility",
+                            "linkName": "Missed Call Facility",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "6",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/services/missed-call-facility",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/services/sms-service",
+                            "linkName": "SMS Service",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "8",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/services/sms-service",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": null,
+                            "linkName": "Update Contact",
+                            "linkDescription": null,
+                            "linkUrl": "https://investor-web.hdfcfund.com/ag/update-user-contact",
+                            "weight": "9",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "https://investor-web.hdfcfund.com/ag/kyc-verification",
+                            "linkName": "Update KYC",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "10",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "https://investor-web.hdfcfund.com/ag/kyc-verification",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          }
+                        ],
+                        "popular": false
+                      }
+                    ],
+                    "popular": false
+                  },
+                  {
+                    "routeConstant": null,
+                    "linkName": "Other Services",
+                    "linkDescription": null,
+                    "linkUrl": "/",
+                    "weight": "5",
+                    "hasChild": true,
+                    "attributes": {
+                      "icon_path": null,
+                      "is_checked": false,
+                      "alt": null
+                    },
+                    "childrens": [
+                      {
+                        "routeConstant": null,
+                        "linkName": "column-1",
+                        "linkDescription": null,
+                        "linkUrl": "/",
+                        "weight": "19",
+                        "hasChild": true,
+                        "attributes": {
+                          "icon_path": null,
+                          "is_checked": false,
+                          "alt": null
+                        },
+                        "childrens": [
+                          {
+                            "routeConstant": "/services/additional-info",
+                            "linkName": "Additional Information",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "1",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/services/additional-info",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/services/contact-us/get-in-touch",
+                            "linkName": "Contact Us",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "2",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/services/contact-us/get-in-touch",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/services/faqs",
+                            "linkName": "FAQs",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "3",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/services/faqs",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/services/forms",
+                            "linkName": "Get Forms",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "4",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/services/forms",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          }
+                        ],
+                        "popular": false
+                      }
+                    ],
+                    "popular": false
+                  },
+                  {
+                    "routeConstant": null,
+                    "linkName": "Investor Awareness",
+                    "linkDescription": null,
+                    "linkUrl": "/",
+                    "weight": "6",
+                    "hasChild": true,
+                    "attributes": {
+                      "target": "_self",
+                      "icon_path": null,
+                      "is_checked": false,
+                      "alt": null
+                    },
+                    "childrens": [
+                      {
+                        "routeConstant": null,
+                        "linkName": "column-1",
+                        "linkDescription": null,
+                        "linkUrl": "/",
+                        "weight": "20",
+                        "hasChild": true,
+                        "attributes": {
+                          "icon_path": null,
+                          "is_checked": false,
+                          "alt": null
+                        },
+                        "childrens": [
+                          {
+                            "routeConstant": "/services/iap-downloads",
+                            "linkName": "IAP Downloads",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "7",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/services/iap-downloads",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/services/investor-awareness-programmes",
+                            "linkName": "Investor Awareness Programmes",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "8",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/services/investor-awareness-programmes",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/services/kyc-redressal-complaints",
+                            "linkName": "KYC & Redressal of Complaints",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "9",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/services/kyc-redressal-complaints",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/information/cyber-security-awareness",
+                            "linkName": "Cyber Security Awareness",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "10",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/information/cyber-security-awareness",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          }
+                        ],
+                        "popular": false
+                      }
+                    ],
+                    "popular": false
+                  }
+                ],
+                "popular": false
+              }
+            ],
+            "popular": false
+          },
+          {
+            "routeConstant": "/about-us",
+            "linkName": "About Us",
+            "linkDescription": null,
+            "linkUrl": "/",
+            "weight": "19",
+            "hasChild": true,
+            "attributes": {
+              "target": "_self",
+              "rel": "/about-us",
+              "class": "menu-about sub-menu",
+              "alt": null,
+              "icon_path": null,
+              "is_checked": false
+            },
+            "childrens": [
+              {
+                "routeConstant": null,
+                "linkName": "column-1",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "0",
+                "hasChild": true,
+                "attributes": {
+                  "target": "_self",
+                  "class": "menu-column-1 learn-column",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [
+                  {
+                    "routeConstant": null,
+                    "linkName": "Corporate Profile",
+                    "linkDescription": null,
+                    "linkUrl": "/",
+                    "weight": "0",
+                    "hasChild": true,
+                    "attributes": {
+                      "target": "_self",
+                      "icon_path": null,
+                      "is_checked": false,
+                      "alt": null
+                    },
+                    "childrens": [
+                      {
+                        "routeConstant": null,
+                        "linkName": "column-1",
+                        "linkDescription": null,
+                        "linkUrl": "/",
+                        "weight": "0",
+                        "hasChild": true,
+                        "attributes": {
+                          "icon_path": null,
+                          "is_checked": false,
+                          "alt": null
+                        },
+                        "childrens": [
+                          {
+                            "routeConstant": "/about-us/hdfc-mf-at-a-glance",
+                            "linkName": "HDFC MF at a Glance",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "1",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/about-us/hdfc-mf-at-a-glance",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/Aboutus/BoardandTrustees.svg",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/about-us/what-sets-us-apart",
+                            "linkName": "What Sets Us Apart",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "2",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/about-us/what-sets-us-apart",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/Aboutus/whatSetsApart.svg",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/about-us/csr",
+                            "linkName": "Corporate Social Responsibility",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "3",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/about-us/csr",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/Aboutus/ESGImage.svg",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/about-us/esg",
+                            "linkName": "Environmental, Social and Governance ",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "5",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/about-us/esg",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/Aboutus/CorporateSocial.svg",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/about-us/our-board-and-trustees",
+                            "linkName": "Our Board and Trustees",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "6",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/about-us/our-board-and-trustees",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/Aboutus/BoardandTrustees.svg",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/about-us/press-releases",
+                            "linkName": "Press Releases",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "7",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/about-us/press-releases",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/Aboutus/MediaCenter.svg",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          }
+                        ],
+                        "popular": false
+                      }
+                    ],
+                    "popular": false
+                  },
+                  {
+                    "routeConstant": null,
+                    "linkName": "AMC Shareholder",
+                    "linkDescription": null,
+                    "linkUrl": "/",
+                    "weight": "1",
+                    "hasChild": true,
+                    "attributes": {
+                      "target": "_self",
+                      "icon_path": null,
+                      "is_checked": false,
+                      "alt": null
+                    },
+                    "childrens": [
+                      {
+                        "routeConstant": null,
+                        "linkName": "column-1",
+                        "linkDescription": null,
+                        "linkUrl": "/",
+                        "weight": "0",
+                        "hasChild": true,
+                        "attributes": {
+                          "icon_path": null,
+                          "is_checked": false,
+                          "alt": null
+                        },
+                        "childrens": [
+                          {
+                            "routeConstant": "/about-us/financial-information/annual-reports",
+                            "linkName": "Financial Information",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "3",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/about-us/financial-information/annual-reports",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/Aboutus/FinancialInfo.svg",
+                              "alt": null,
+                              "icon_path": null,
+                              "is_checked": false
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/about-us/corporate-governance/codes-policies",
+                            "linkName": "Corporate Governance",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "4",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/about-us/corporate-governance/codes-policies",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/Aboutus/CorporateGovernance.svg",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": "/about-us/forms-circulares",
+                            "linkName": "Forms & Circulars",
+                            "linkDescription": null,
+                            "linkUrl": "/",
+                            "weight": "5",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_self",
+                              "rel": "/about-us/forms-circulares",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/Aboutus/FormsandCirculars.svg",
+                              "icon_path": null,
+                              "is_checked": false,
+                              "alt": null
+                            },
+                            "childrens": [],
+                            "popular": false
+                          },
+                          {
+                            "routeConstant": null,
+                            "linkName": "MOA & AOA",
+                            "linkDescription": null,
+                            "linkUrl": "https://files.hdfcfund.com/s3fs-public/2025-01/HDFC%20AMC%20Final%20Booklet.pdf",
+                            "weight": "7",
+                            "hasChild": false,
+                            "attributes": {
+                              "target": "_blank",
+                              "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/Aboutus/FormsandCirculars.svg",
+                              "alt": null,
+                              "icon_path": null,
+                              "is_checked": false
+                            },
+                            "childrens": [],
+                            "popular": false
+                          }
+                        ],
+                        "popular": false
+                      }
+                    ],
+                    "popular": false
+                  }
+                ],
+                "popular": false
+              }
+            ],
+            "popular": false
+          },
+          {
+            "routeConstant": "/distributor-corner/digital-onboarding",
+            "linkName": "Distributor Corner",
+            "linkDescription": null,
+            "linkUrl": "/",
+            "weight": "21",
+            "hasChild": true,
+            "attributes": {
+              "target": "_self",
+              "rel": "/distributor-corner/digital-onboarding",
+              "icon_path": null,
+              "is_checked": false,
+              "alt": null
+            },
+            "childrens": [
+              {
+                "routeConstant": null,
+                "linkName": "coloumn-1",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "0",
+                "hasChild": true,
+                "attributes": {
+                  "target": "_self",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [
+                  {
+                    "routeConstant": "https://distributor.hdfcfund.com/",
+                    "linkName": "Login",
+                    "linkDescription": null,
+                    "linkUrl": "https://distributor.hdfcfund.com/",
+                    "weight": "0",
+                    "hasChild": false,
+                    "attributes": {
+                      "target": "_blank",
+                      "rel": "https://distributor.hdfcfund.com/",
+                      "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/DistributorCorner/OneClickLink.svg",
+                      "icon_path": null,
+                      "is_checked": false,
+                      "alt": null
+                    },
+                    "childrens": [],
+                    "popular": false
+                  },
+                  {
+                    "routeConstant": "/distributor-corner/digital-onboarding",
+                    "linkName": "Digital Onboarding",
+                    "linkDescription": "Empanel, register and login with HDFC MFOnline",
+                    "linkUrl": "/",
+                    "weight": "2",
+                    "hasChild": false,
+                    "attributes": {
+                      "target": "_self",
+                      "rel": "/distributor-corner/digital-onboarding",
+                      "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/DistributorCorner/OnboardDigitally.svg",
+                      "icon_path": null,
+                      "is_checked": false,
+                      "alt": null
+                    },
+                    "childrens": [],
+                    "popular": false
+                  },
+                  {
+                    "routeConstant": "/distributor-corner/forms-disclosure/forms",
+                    "linkName": "Forms & Disclosures",
+                    "linkDescription": "Find all the forms and disclosures",
+                    "linkUrl": "/",
+                    "weight": "3",
+                    "hasChild": false,
+                    "attributes": {
+                      "target": "_self",
+                      "rel": "/distributor-corner/forms-disclosure/forms",
+                      "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/DistributorCorner/FormsandDisclosures.svg",
+                      "icon_path": null,
+                      "is_checked": false,
+                      "alt": null
+                    },
+                    "childrens": [],
+                    "popular": false
+                  },
+                  {
+                    "routeConstant": "https://distributor.hdfcfund.com/arn-hardcoded",
+                    "linkName": "One Click Link",
+                    "linkDescription": "Generate your personalized ARN hardcoded transaction link",
+                    "linkUrl": "https://distributor.hdfcfund.com/arn-hardcoded",
+                    "weight": "4",
+                    "hasChild": false,
+                    "attributes": {
+                      "target": "_self",
+                      "rel": "https://distributor.hdfcfund.com/arn-hardcoded",
+                      "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/DistributorCorner/OneClickLink.svg",
+                      "icon_path": null,
+                      "is_checked": false,
+                      "alt": null
+                    },
+                    "childrens": [],
+                    "popular": false
+                  },
+                  {
+                    "routeConstant": "/distributor-corner/faqs",
+                    "linkName": "FAQs",
+                    "linkDescription": "Get answers to the most common queries",
+                    "linkUrl": "/",
+                    "weight": "5",
+                    "hasChild": false,
+                    "attributes": {
+                      "target": "_self",
+                      "rel": "/distributor-corner/faqs",
+                      "class": "https://files.hdfcfund.com/s3fs-public/new-website-images/NewMenuImages/DistributorCorner/FAQsDistributor.svg",
+                      "icon_path": null,
+                      "is_checked": false,
+                      "alt": null
+                    },
+                    "childrens": [],
+                    "popular": false
+                  }
+                ],
+                "popular": false
+              }
+            ],
+            "popular": false
+          }
+        ],
+        "footerMenu": [
+          {
+            "routeConstant": null,
+            "linkName": "IMPORTANT LINKS",
+            "linkDescription": null,
+            "linkUrl": "/",
+            "weight": "-50",
+            "hasChild": true,
+            "attributes": {
+              "target": "_self",
+              "class": "footer-column",
+              "icon_path": null,
+              "is_checked": false,
+              "alt": null
+            },
+            "childrens": [
+              {
+                "routeConstant": null,
+                "linkName": "PMS Login",
+                "linkDescription": null,
+                "linkUrl": "https://pms.hdfcfund.com/wealthspectrum/portal/",
+                "weight": "-50",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_blank",
+                  "class": "",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": null,
+                "linkName": "AIF Investor Login",
+                "linkDescription": null,
+                "linkUrl": "https://pe.camsonline.com/pe/hdfcalternative/login",
+                "weight": "-49",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_blank",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": null,
+                "linkName": "AIF Distributor Portal",
+                "linkDescription": null,
+                "linkUrl": "https://aif.camsonline.com/pedistributor/hdfcalternative/login",
+                "weight": "-48",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/statutory-disclosure",
+                "linkName": "Statutory Disclosures (MF/ AIF/ PMS)",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-47",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/statutory-disclosure",
+                  "class": "footer-column",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/services/contact-us/get-in-touch",
+                "linkName": "Contact Us",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-46",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/services/contact-us/get-in-touch",
+                  "class": "footer-column",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/careers",
+                "linkName": "Careers",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-43",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/careers",
+                  "class": "footer-column",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/services/contact-us/stakeholders-information-and-helpdesk",
+                "linkName": "ODR Portal for AMC Shareholders",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-42",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/services/contact-us/stakeholders-information-and-helpdesk",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/information/grievances-redressal-mechanism",
+                "linkName": "ODR for Investors (HDFC MF, PMS and AIF)",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-41",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/information/grievances-redressal-mechanism",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/glossary",
+                "linkName": "Glossary",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-40",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/glossary",
+                  "class": "footer-column",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/statutory-disclosure/public-caution-notice",
+                "linkName": "Public Caution Notice",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-39",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/statutory-disclosure/public-caution-notice",
+                  "class": "caution-notice",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/chhotisip",
+                "linkName": "Chhoti SIP",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-38",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/chhotisip",
+                  "class": "footer-column",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/alternatives/private-credit",
+                "linkName": "HDFC AMC Structured Credit Fund– I (Category II AIF)",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-37",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/alternatives/private-credit",
+                  "class": "footer-column",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              }
+            ],
+            "popular": false
+          },
+          {
+            "routeConstant": "/services",
+            "linkName": "INVESTORS",
+            "linkDescription": null,
+            "linkUrl": "/",
+            "weight": "-49",
+            "hasChild": true,
+            "attributes": {
+              "target": "_self",
+              "rel": "/services",
+              "class": "footer-column",
+              "icon_path": null,
+              "is_checked": false,
+              "alt": null
+            },
+            "childrens": [
+              {
+                "routeConstant": "/statutory-disclosure/total-expense-ratio-of-mutual-fund-schemes/reports",
+                "linkName": "Total Expense Ratio (TER)",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-50",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/statutory-disclosure/total-expense-ratio-of-mutual-fund-schemes/reports",
+                  "class": "footer-column",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/services/faqs",
+                "linkName": "FAQ’s",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-49",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/services/faqs",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/nav-and-idcw",
+                "linkName": "NAV and IDCW",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-48",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/nav-and-idcw",
+                  "class": "footer-column",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/statutory-disclosure/portfolio/monthly-portfolio",
+                "linkName": "Monthly & Fortnightly Scheme Portfolio",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-47",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/statutory-disclosure/portfolio/monthly-portfolio",
+                  "class": "footer-column",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/learn/macros-markets-more/market-review",
+                "linkName": "Market Update",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-46",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/learn/macros-markets-more/market-review",
+                  "class": "footer-column",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/information/notice-fortnightly-monthly-portfolios",
+                "linkName": "Notice (Monthly & Fortnightly Portfolio)",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-45",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/information/notice-fortnightly-monthly-portfolios",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": null,
+                "linkName": "Mutual Fund Shorts",
+                "linkDescription": null,
+                "linkUrl": "https://www.hdfcfund.com/mutual-fund-shorts",
+                "weight": "-44",
+                "hasChild": false,
+                "attributes": {
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": null,
+                "linkName": "Mutual Fund Glossary",
+                "linkDescription": null,
+                "linkUrl": "https://www.hdfcfund.com/glossary",
+                "weight": "-43",
+                "hasChild": false,
+                "attributes": {
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              }
+            ],
+            "popular": false
+          },
+          {
+            "routeConstant": null,
+            "linkName": "DOWNLOADS",
+            "linkDescription": null,
+            "linkUrl": "/",
+            "weight": "-48",
+            "hasChild": true,
+            "attributes": {
+              "target": "_self",
+              "class": "footer-column",
+              "icon_path": null,
+              "is_checked": false,
+              "alt": null
+            },
+            "childrens": [
+              {
+                "routeConstant": "/services/forms",
+                "linkName": "Forms",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-50",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/services/forms",
+                  "class": "footer-column",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/mutual-funds/fund-documents/kim",
+                "linkName": "Product Information",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-49",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/mutual-funds/fund-documents/kim",
+                  "class": "footer-column",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/mutual-funds/factsheets",
+                "linkName": "Factsheet",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-48",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/mutual-funds/factsheets",
+                  "class": "footer-column",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/statutory-disclosure/annual-reports",
+                "linkName": "Scheme Annual Report",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-47",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/statutory-disclosure/annual-reports",
+                  "class": "footer-column",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/statutory-disclosure/scheme-performance",
+                "linkName": "Scheme Performance Summary",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-46",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/statutory-disclosure/scheme-performance",
+                  "class": "footer-column",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/statutory-disclosure/form-disclosures/addenda-notices",
+                "linkName": "Addendum & Notices",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-45",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/statutory-disclosure/form-disclosures/addenda-notices",
+                  "class": "footer-column",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              }
+            ],
+            "popular": false
+          },
+          {
+            "routeConstant": "/distributor-corner/digital-onboarding",
+            "linkName": "DISTRIBUTORS",
+            "linkDescription": null,
+            "linkUrl": "/",
+            "weight": "-47",
+            "hasChild": true,
+            "attributes": {
+              "target": "_self",
+              "rel": "/distributor-corner/digital-onboarding",
+              "class": "footer-column",
+              "icon_path": null,
+              "is_checked": false,
+              "alt": null
+            },
+            "childrens": [
+              {
+                "routeConstant": null,
+                "linkName": "Log In",
+                "linkDescription": null,
+                "linkUrl": "https://distributor.hdfcfund.com/",
+                "weight": "-50",
+                "hasChild": false,
+                "attributes": {
+                  "class": "",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/distributor-corner/digital-onboarding",
+                "linkName": "Become an MFD",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-49",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/distributor-corner/digital-onboarding",
+                  "class": "footer-column",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/distributor-corner/digital-onboarding",
+                "linkName": "Onboard Digitally",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-48",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/distributor-corner/digital-onboarding",
+                  "class": "footer-column",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/distributor-corner/forms-disclosure/forms",
+                "linkName": "Forms & Disclosures",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-47",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/distributor-corner/forms-disclosure/forms",
+                  "class": "footer-column",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": null,
+                "linkName": "One click Link",
+                "linkDescription": null,
+                "linkUrl": "https://distributor.hdfcfund.com/arn-hardcoded?_gl=1*ivxzss*_gcl_au*MTM5ODgxODMwMC4xNjk5NTA2NTQy",
+                "weight": "-46",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "class": "footer-column",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              },
+              {
+                "routeConstant": "/distributor-corner/faqs",
+                "linkName": "FAQs",
+                "linkDescription": null,
+                "linkUrl": "/",
+                "weight": "-45",
+                "hasChild": false,
+                "attributes": {
+                  "target": "_self",
+                  "rel": "/distributor-corner/faqs",
+                  "class": "footer-column",
+                  "icon_path": null,
+                  "is_checked": false,
+                  "alt": null
+                },
+                "childrens": [],
+                "popular": false
+              }
+            ],
+            "popular": false
+          }
+        ],
+        "footerlinks": [
+          {
+            "title": "Fund Categories:",
+            "value": [
+              {
+                "title": "Equity",
+                "url": "/explore/mutual-funds/equity"
+              },
+              {
+                "title": "Debt",
+                "url": "/explore/mutual-funds/debt"
+              },
+              {
+                "title": "Hybrid",
+                "url": "/explore/mutual-funds/hybrid"
+              },
+              {
+                "title": "Solution Oriented",
+                "url": "/explore/mutual-funds/solution-oriented"
+              },
+              {
+                "title": "Fund of Funds",
+                "url": "/explore/mutual-funds/fund-of-funds"
+              },
+              {
+                "title": "ETF",
+                "url": "/explore/mutual-funds/etf"
+              },
+              {
+                "title": "Tax Saver",
+                "url": "/explore/mutual-funds/tax-saver"
+              },
+              {
+                "title": "Index",
+                "url": "/explore/mutual-funds/index"
+              },
+              {
+                "title": "Close Ended",
+                "url": "/explore/mutual-funds/close-ended"
+              }
+            ]
+          },
+          {
+            "title": "Most Searched Funds:",
+            "value": [
+              {
+                "title": "HDFC Flexi Cap Fund",
+                "url": "/explore/mutual-funds/hdfc-flexi-cap-fund/direct"
+              },
+              {
+                "title": "HDFC Balanced Advantage Fund",
+                "url": "/explore/mutual-funds/hdfc-balanced-advantage-fund/direct"
+              },
+              {
+                "title": "HDFC Large Cap Fund",
+                "url": "/explore/mutual-funds/hdfc-large-cap-fund/direct"
+              },
+              {
+                "title": "HDFC Mid Cap Fund",
+                "url": "/explore/mutual-funds/hdfc-mid-cap-fund/direct"
+              },
+              {
+                "title": "HDFC Small Cap Fund",
+                "url": "/explore/mutual-funds/hdfc-small-cap-fund/direct"
+              }
+            ]
+          },
+          {
+            "title": "Calculators:",
+            "value": [
+              {
+                "title": "CAGR Calculator",
+                "url": "/calculators/cagr-calculator"
+              },
+              {
+                "title": "Compound Interest Calculator",
+                "url": "/calculators/compound-interest-calculator"
+              },
+              {
+                "title": "Lumpsum Calculator",
+                "url": "/calculators/lumpsum-calculator"
+              },
+              {
+                "title": "Mutual Fund Returns Calculator",
+                "url": "/calculators/mutual-fund-returns-calculator"
+              },
+              {
+                "title": "Present Value Calculator",
+                "url": "/calculators/present-value-calculator"
+              },
+              {
+                "title": "Simple Interest Calculator",
+                "url": null
+              },
+              {
+                "title": "XIRR Calculator",
+                "url": "/calculators/xirr-calculator"
+              },
+              {
+                "title": "Cost of Child Education Calculator",
+                "url": "/calculators/cost-of-child-education-calculator"
+              },
+              {
+                "title": "Goal Sip Calculator",
+                "url": "/calculators/goal-sip-calculator"
+              },
+              {
+                "title": "Inflation Calculator",
+                "url": "/calculators/inflation-calculator"
+              },
+              {
+                "title": "Retirement Calculator",
+                "url": "/calculators/retirement-calculator"
+              },
+              {
+                "title": "SIP Calculator",
+                "url": "/calculators/sip-calculator"
+              },
+              {
+                "title": "STP Calculator",
+                "url": "/calculators/stp-calculator"
+              },
+              {
+                "title": "SWP Calculator",
+                "url": "/calculators/swp-calculator"
+              },
+              {
+                "title": "Step Up SIP Calculator",
+                "url": "/calculators/step-up-sip-calculator"
+              }
+            ]
+          },
+          {
+            "title": "HDFC Group Websites:",
+            "value": [
+              {
+                "title": "HDFC Bank",
+                "url": "https://www.hdfcbank.com"
+              },
+              {
+                "title": "HDFC Securities",
+                "url": "https://www.hdfcsec.com/"
+              },
+              {
+                "title": "HDFC Ergo",
+                "url": "https://www.hdfcergo.com"
+              },
+              {
+                "title": "HDB Financial Services",
+                "url": "https://www.hdbfs.com/"
+              },
+              {
+                "title": "HDFC Capital",
+                "url": "https://www.hdfccapital.com/"
+              },
+              {
+                "title": "HDFC Life",
+                "url": "https://www.hdfclife.com"
+              },
+              {
+                "title": "HDFC Pension",
+                "url": "https://www.hdfcpension.com/"
+              },
+              {
+                "title": "HDFC Sales",
+                "url": "https://www.hdfcsales.com"
+              },
+              {
+                "title": "HT Parekh Foundation",
+                "url": "https://www.htparekhfoundation.com"
+              }
+            ]
+          },
+          {
+            "title": "Info & Disclosures:",
+            "value": [
+              {
+                "title": "Disclaimer",
+                "url": "/disclaimer"
+              },
+              {
+                "title": "Privacy Policy",
+                "url": "/privacy-policy"
+              },
+              {
+                "title": "Sitemap",
+                "url": "/sitemap"
+              }
+            ]
+          }
+        ],
+        "updatesAndNotifications": {
+          "title": "Updates & Notifications",
+          "image": {
+            "alt": "",
+            "title": "",
+            "url": "https://files.hdfcfund.com/s3fs-public/2018-07/update%20and%20notification.jpg",
+            "width": "1500",
+            "height": "500"
+          },
+          "notifications": [
+            {
+              "description": "Download Factsheet",
+              "link": {
+                "title": "Factsheet",
+                "uri": "https://www.hdfcfund.com/mutual-funds/factsheets",
+                "nodeID": null,
+                "suggestedUrl": null,
+                "routeConstant": null
+              }
+            },
+            {
+              "description": "Total Expense Ratio (TER) Details",
+              "link": {
+                "title": "Total Expense Ratio (TER)",
+                "uri": "https://www.hdfcfund.com/statutory-disclosure/total-expense-ratio-of-mutual-fund-schemes/reports",
+                "nodeID": null,
+                "suggestedUrl": null,
+                "routeConstant": null
+              }
+            },
+            {
+              "description": "Due to a planned customer service system upgrade, you may experience some delay in response to emails. For immediate support, please contact our Call Centre (visit ‘Contact Us’) or access self‑help options on the ‘E‑Services’ page.",
+              "link": {
+                "title": "",
+                "uri": "https://www.hdfcfund.com/information/due-planned-customer-service-system-upgrade-you-may-experience-some-delay-response-emails",
+                "nodeID": null,
+                "suggestedUrl": null,
+                "routeConstant": null
+              }
+            },
+            {
+              "description": "We have updated the ‘Standard Operating Procedure (SOP) for Voluntary Lock-in/Debit freeze process for Non-Demat units’ on our website, you can refer this under ‘Frequently Asked Questions for Investor’ tab.",
+              "link": {
+                "title": null,
+                "uri": null,
+                "nodeID": null,
+                "suggestedUrl": null,
+                "routeConstant": null
+              }
+            },
+            {
+              "description": "Due to strike, our Ferozepur Business Centre closed early today viz. 21st August ‘2026",
+              "link": {
+                "title": null,
+                "uri": null,
+                "nodeID": null,
+                "suggestedUrl": null,
+                "routeConstant": null
+              }
+            },
+            {
+              "description": "Due to strike, our Jalandhar ISC closed early today viz. 21st August ‘2026.",
+              "link": {
+                "title": null,
+                "uri": null,
+                "nodeID": null,
+                "suggestedUrl": null,
+                "routeConstant": null
+              }
+            },
+            {
+              "description": "Due to strike, our Moga Business Centre closed early today viz. 21st August ‘2026.",
+              "link": {
+                "title": null,
+                "uri": null,
+                "nodeID": null,
+                "suggestedUrl": null,
+                "routeConstant": null
+              }
+            },
+            {
+              "description": "Please note that due to the bank Holiday on 26th August 2026 on account of Id-E-Milad, it will be a non-business day for all our Liquid & Debt schemes.",
+              "link": {
+                "title": null,
+                "uri": null,
+                "nodeID": null,
+                "suggestedUrl": null,
+                "routeConstant": null
+              }
+            },
+            {
+              "description": "All ISC's and Business Centre's in Kerala will remain closed on August 25th & 26th on the occasion of Onam",
+              "link": {
+                "title": null,
+                "uri": null,
+                "nodeID": null,
+                "suggestedUrl": null,
+                "routeConstant": null
+              }
+            },
+            {
+              "description": "All Investor Service Centres and Business Centres in Goa will remain closed on September 15th on the occasion of Ganesh Chaturthi",
+              "link": {
+                "title": null,
+                "uri": null,
+                "nodeID": null,
+                "suggestedUrl": null,
+                "routeConstant": null
+              }
+            },
+            {
+              "description": "NRI Number Temporarily Unavailable due to CAMS maintenance\r\n\r\n",
+              "link": {
+                "title": "",
+                "uri": "https://www.hdfcfund.com/information/nri-number-temporarily-unavailable-due-cams-maintenance",
+                "nodeID": null,
+                "suggestedUrl": null,
+                "routeConstant": null
+              }
+            }
+          ]
+        }
+      },
+      "code": 200,
+      "message": "success"
+    },
+    "promotionalData": {
+      "data": {
+        "title": "<p><strong>NFO Alert!</strong> Invest in <strong>HDFC BSE REITS and Commercial Real Estate Index Fund</strong> (period - 15 September to 17 September 2026)</p>",
+        "display": false,
+        "cta1": {
+          "uri": "https://www.hdfcfund.com/explore/nfo/hdfc-bse-reits-and-commercial-real-estate-index-fund/direct",
+          "title": "Know More"
+        },
+        "cta2": {
+          "uri": "https://investor-web.hdfcfund.com/ag/RT?schemeGroupCode=BRC&arnFlag=false",
+          "title": "Invest Now"
+        },
+        "fundData": [
+          {
+            "name": "HDFC Flexi Cap Fund",
+            "suggestedUrl": "/explore/mutual-funds/hdfc-flexi-cap-fund/direct?utm_source=website&utm_medium=performance_ticker&utm_campaign=flexicap",
+            "returns": {
+              "5Y": "18.46"
+            }
+          },
+          {
+            "name": "HDFC Mid Cap Fund",
+            "suggestedUrl": "/explore/mutual-funds/hdfc-mid-cap-fund/direct?utm_source=website&utm_medium=performance_ticker&utm_campaign=midcap",
+            "returns": {
+              "5Y": "20.33"
+            }
+          },
+          {
+            "name": "HDFC Small Cap Fund",
+            "suggestedUrl": "/explore/mutual-funds/hdfc-small-cap-fund/direct?utm_source=website&utm_medium=performance_ticker&utm_campaign=smallcap",
+            "returns": {
+              "5Y": "16.11"
+            }
+          },
+          {
+            "name": "HDFC Focused Fund",
+            "suggestedUrl": "/explore/mutual-funds/hdfc-focused-fund/direct?utm_source=website&utm_medium=performance_ticker&utm_campaign=focusedfund",
+            "returns": {
+              "5Y": "19.36"
+            }
+          },
+          {
+            "name": "HDFC Flexi Cap Fund",
+            "suggestedUrl": "/explore/mutual-funds/hdfc-flexi-cap-fund/direct?utm_source=website&utm_medium=performance_ticker&utm_campaign=flexicap",
+            "returns": {
+              "10Y": "16.20"
+            }
+          },
+          {
+            "name": "HDFC Mid Cap Fund",
+            "suggestedUrl": "/explore/mutual-funds/hdfc-mid-cap-fund/direct?utm_source=website&utm_medium=performance_ticker&utm_campaign=midcap",
+            "returns": {
+              "10Y": "17.67"
+            }
+          },
+          {
+            "name": "HDFC Small Cap Fund",
+            "suggestedUrl": "/explore/mutual-funds/hdfc-small-cap-fund/direct?utm_source=website&utm_medium=performance_ticker&utm_campaign=smallcap",
+            "returns": {
+              "10Y": "17.66"
+            }
+          },
+          {
+            "name": "HDFC Focused Fund",
+            "suggestedUrl": "/explore/mutual-funds/hdfc-focused-fund/direct?utm_source=website&utm_medium=performance_ticker&utm_campaign=focusedfund",
+            "returns": {
+              "10Y": "15.02"
+            }
+          }
+        ],
+        "showOnPerformance": true
+      },
+      "code": 200,
+      "message": "success"
+    },
+    "__N_SSP": true,
+    "pageProps": {
+      "information": "request-statement",
+      "additionalInformationResponse": {
+        "data": {
+          "title": "Request Statement",
+          "routeConstant": "information",
+          "meta": {
+            "title": "Request Statement - Track Your HDFC Investments",
+            "description": "HDFC Mutual Fund offers the convenience of having your account statement sent to your email id registered with us. In accordance with SEBI guidelines confirmation specifying the units allotted shall be sent through an email and/or SMS within 5 business days of the initial investment transaction to the Unit holders.\r\n",
+            "keywords": "hdfc mutual fund, mutual funds, sebi, sebi guidelines, sebi circular, consolidated account statement, cas\r\n",
+            "og_title": null,
+            "og_description": null,
+            "og_image": null,
+            "og_url": null
+          },
+          "head": null,
+          "body": "<div class=\"drupal\"><p class=\"text-align-justify\">We offer you the convenience of having your account statement sent to your email id registered with us. Please enter your folio number in the box provided below and choose the option in which you wish to receive your account statement.</p><p class=\"text-align-justify\">Pursuant to SEBI guidelines, with effect from October 1, 2011, an allotment confirmation specifying the units allotted shall be sent by way of email and/or SMS within 5 Business Days of the initial investment transaction to the Unit holders who have registered their e-mail address and/or mobile number.&nbsp;</p><p class=\"text-align-justify\">Thereafter, a Consolidated Account Statement (CAS) shall be sent to the Unit holder in whose folio transactions have taken place during that month, on or before 10th of the succeeding month by mail/ email as applicable.&nbsp;</p><p class=\"text-align-justify\">In case of specific request received from investors, Mutual Fund will provide an account statement to the investors within 5 Business Days from the receipt of such request.&nbsp;</p><p class=\"text-align-justify\"><a href=\"https://files.hdfcfund.com/s3fs-public/inline-files/364%20Addendum%20dated%20Sept%2030%2C%202011%20-%20%20Revision%20and%20Addition%20of%20Provision%28s%29%20-%20CAS-DEMAT%20OPTION%20-%20ANNUAL%20REPORT%20%281%29.pdf\" target=\"_blank\" data-entity-type=\"file\" data-entity-uuid=\"81449357-6a0f-46f5-b8ea-fae652f812c9\"><span class=\"blue-link\">Click here</span></a>&nbsp;to view the addendum&nbsp;<br><a href=\"https://www.hdfcfund.com/investor-services/investor-faq/general\" target=\"_blank\"><span class=\"blue-link\">Click here</span></a>&nbsp;<span style=\"font-size:11pt;line-height:115%;\">for FAQ's</span></p><h1 class=\"text-align-justify\"><strong>Request statement</strong></h1><ul><li><p class=\"text-align-justify\"><strong>Account statement&nbsp; - </strong><a href=\"https://www.hdfcfund.com/services/consolidated-account-statement\" target=\"_blank\"><span class=\"blue-link\"><strong>Click here</strong></span></a></p></li><li><p class=\"text-align-justify\"><strong>Dividend statement -&nbsp;</strong><a href=\"https://investor-web.hdfcfund.com/\" target=\"_blank\"><span class=\"blue-link\">Click here</span></a></p></li><li><p class=\"text-align-justify\"><strong>Exit load statement -&nbsp;</strong><a href=\"https://investor-web.hdfcfund.com/\" target=\"_blank\"><span class=\"blue-link\">Click here</span></a></p></li><li><p class=\"text-align-justify\"><strong>Capital Gains Statement -&nbsp;</strong><a href=\"https://investor-web.hdfcfund.com/\" target=\"_blank\"><span class=\"blue-link\">Click here</span></a></p></li><li><p class=\"text-align-justify\"><strong>Consolidated account statement -&nbsp;</strong><a href=\"https://www.camsonline.com/InvestorServices/COL_ISAccountStatementCKF.aspx\" target=\"_blank\"><span class=\"blue-link\">Click here</span></a></p></li><li><p class=\"text-align-justify\"><strong>Consolidated realized gains statement -&nbsp;</strong><a href=\"https://www.camsonline.com/InvestorServices/COL_ISGainStmt.aspx\" target=\"_blank\"><span class=\"blue-link\">Click here</span></a></p></li><li><p class=\"text-align-justify\" style=\"margin:0in 0in 8pt;\"><strong>Account statement by SMS</strong></p></li></ul><p class=\"text-align-justify\" style=\"margin:0in 0in 8pt;\"><strong>SMS to be sent as :&nbsp;&gt;CAMS H SOA&nbsp;&lt;Folio Number without check digit&gt;&nbsp;&lt;password&gt;&nbsp;to&nbsp;56767,&nbsp;&nbsp;e.g.CAMS H SOA&nbsp;123456 ab785z</strong></p><p class=\"text-align-justify\"><strong>Response :&nbsp;</strong>Will either return an SMS confirmation that an account statement will be emailed; or in the event of error, will report the appropriate error.</p><ul><li><p class=\"text-align-justify\"><strong>Account statement</strong><font color=\"#263039\" face=\"HelveticaM\"><strong>&nbsp;through IVR</strong></font></p></li></ul><p class=\"text-align-justify\">Call us on&nbsp;<span style=\"box-sizing:border-box;color:#263039;font-family:HelveticaM;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-decoration-color:initial;text-decoration-style:initial;text-transform:none;white-space:normal;widows:2;word-spacing:0px;\"><strong style=\"box-sizing:border-box;\">1800-3010-6767 (Toll Free) / 1800-419-7676&nbsp;</strong></span><span style=\"font-family:Calibri,sans-serif;font-size:11pt;line-height:115%;\">and follow the instructions</span>.</p><p class=\"text-align-justify\">Investors calling from abroad may call on 91-44-33462406 to connect to our Call Center. Our call center executives will be available for assistance from 9:00 am&nbsp;to 6:00 pm (Monday to Friday) and 9:00 am to 1:00 pm (Saturday).</p><ul><li><p class=\"text-align-justify\">You can also request for an account statement across the counter by visiting any of our Investor Service Center.&nbsp; <a href=\"https://www.hdfcfund.com/services/contact-us/visit-us\"><span class=\"blue-link\">Click here</span></a> <span style=\"font-family:Calibri,sans-serif;font-size:11pt;line-height:115%;\">to view ISC details.</span></p></li></ul></div>"
+        },
+        "code": 200,
+        "message": "success"
+      }
+    }
+  },
+  "page": "/services/additional-info/[information]",
+  "query": {
+    "information": "request-statement"
+  },
+  "buildId": "OFGuHu13JZXwzj2oMULkI",
+  "isFallback": false,
+  "isExperimentalCompile": false,
+  "gssp": true,
+  "appGip": true,
+  "scriptLoader": []
+}

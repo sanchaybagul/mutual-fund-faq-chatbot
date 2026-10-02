@@ -19,7 +19,8 @@ def fake_llm(monkeypatch):
 def test_fact_goes_through_llm_with_citation(fake_llm):
     r = pipeline.answer("What is the exit load on HDFC Small Cap Fund?")
     assert r.kind == "answer" and fake_llm
-    assert r.citation_url == "https://groww.in/mutual-funds/hdfc-small-cap-fund-direct-growth"
+    assert r.citation_url.startswith("https://www.hdfcfund.com/") or \
+        r.citation_url.startswith("https://files.hdfcfund.com/")
     assert r.last_updated
 
 
@@ -40,9 +41,10 @@ def test_non_llm_routes_never_call_llm(fake_llm, q, kind):
 
 def test_refusal_links():
     assert pipeline.answer("Should I buy HDFC ELSS?").citation_url == templates.EDU_LINK
-    perf = pipeline.answer("What were the returns of HDFC ELSS?")
-    assert perf.citation_url == "https://groww.in/mutual-funds/hdfc-elss-tax-saver-fund-direct-plan-growth"
-    assert pipeline.answer("How have HDFC funds performed?").citation_url == pipeline.AMC_URL
+    factsheet = pipeline.factsheet_source()["url"]
+    assert "HDFC%20MF%20Factsheet" in factsheet
+    assert pipeline.answer("What were the returns of HDFC ELSS?").citation_url == factsheet
+    assert pipeline.answer("How have HDFC funds performed?").citation_url == factsheet
 
 
 def test_pii_block_has_no_link_and_no_echo():
@@ -63,4 +65,10 @@ def test_not_found_without_scheme_links_amc_site(monkeypatch):
     r = pipeline.answer("How do I download my capital gains statement?")
     assert r.kind == "not_found" and r.citation_url == pipeline.AMC_URL
     r = pipeline.answer("Who is the CEO of HDFC Small Cap Fund's AMC?")
-    assert r.citation_url == "https://groww.in/mutual-funds/hdfc-small-cap-fund-direct-growth"
+    assert r.citation_url == "https://www.hdfcfund.com/explore/mutual-funds/hdfc-small-cap-fund/direct"
+
+
+def test_scheme_links_use_scheme_pages_only():
+    links = pipeline.scheme_sources()
+    assert len(links) == 5
+    assert all(v["url"].startswith("https://www.hdfcfund.com/explore/mutual-funds/") for v in links.values())

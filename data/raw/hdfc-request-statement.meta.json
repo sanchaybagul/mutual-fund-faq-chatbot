@@ -1,0 +1,10 @@
+{
+  "slug": "hdfc-request-statement",
+  "url": "https://www.hdfcfund.com/services/additional-info/request-statement",
+  "fetched_at": "2026-10-02",
+  "status": 200,
+  "format": "html",
+  "has_next_data": true,
+  "bytes": 129881,
+  "visible_text_chars": 6695
+}

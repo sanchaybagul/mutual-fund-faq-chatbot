@@ -11,6 +11,8 @@ SANITY_QUERIES = [
     ("exit load small cap", "HDFC Small Cap Fund"),
     ("ELSS lock-in period", "HDFC ELSS Tax Saver Fund"),
     ("expense ratio of flexi cap fund", "HDFC Flexi Cap Fund"),
+    ("how to download capital gains statement", "General"),
+    ("what is a riskometer", "General"),
 ]
 
 
@@ -30,9 +32,11 @@ def main(reset: bool = True, fetch: bool = False) -> None:
 
 
 def sanity_check() -> None:
-    print("\nSanity check (unfiltered top-4):")
+    from src.retriever import retrieve  # scheme-aware, as the app queries
+
+    print("\nSanity check (scheme-aware top-4):")
     for q, expected in SANITY_QUERIES:
-        hits = store.query(embedder.embed([q])[0], k=4)
+        hits = retrieve(q).chunks
         top = hits[0]["metadata"]["scheme"]
         print(f"\n  Q: {q!r}  → top-1 {'✓' if top == expected else '✗'} (expected {expected})")
         for h in hits:

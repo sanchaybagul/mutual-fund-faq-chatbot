@@ -8,6 +8,8 @@
 | **Context** | Class demo / milestone project |
 | **Source brief** | [problemstatement.txt](problemstatement.txt) |
 
+> **Update 2026-10-02 — corpus revision.** The revised brief asks for 15–25 official AMC/SEBI/AMFI pages and no third-party sources, so the five Groww pages were replaced by 18 official sources (HDFC MF scheme pages, KIMs, factsheet and statement guides; SEBI and AMFI investor-education pages). See [sources.md](../sources.md) and [field_map.md](field_map.md). Sections below that mention Groww describe the original build.
+
 ---
 
 ## 1. Summary
@@ -46,17 +48,15 @@ Retail investors comparing schemes, and support or content teams, answer the sam
 
 **AMC:** HDFC Mutual Fund. All schemes are **Direct – Growth** plans.
 
-| # | Category | Scheme | Source URL |
+| # | Category | Scheme | Scheme page (official) |
 |---|---|---|---|
-| 1 | Large Cap | HDFC Large Cap Fund | https://groww.in/mutual-funds/hdfc-large-cap-fund-direct-growth |
-| 2 | Flexi Cap | HDFC Flexi Cap Fund (formerly HDFC Equity Fund) | https://groww.in/mutual-funds/hdfc-equity-fund-direct-growth |
-| 3 | ELSS | HDFC ELSS Tax Saver Fund | https://groww.in/mutual-funds/hdfc-elss-tax-saver-fund-direct-plan-growth |
-| 4 | Small Cap | HDFC Small Cap Fund | https://groww.in/mutual-funds/hdfc-small-cap-fund-direct-growth |
-| 5 | Hybrid (BAF) | HDFC Balanced Advantage Fund | https://groww.in/mutual-funds/hdfc-balanced-advantage-fund-direct-growth |
+| 1 | Large Cap | HDFC Large Cap Fund | https://www.hdfcfund.com/explore/mutual-funds/hdfc-large-cap-fund/direct |
+| 2 | Flexi Cap | HDFC Flexi Cap Fund (formerly HDFC Equity Fund) | https://www.hdfcfund.com/explore/mutual-funds/hdfc-flexi-cap-fund/direct |
+| 3 | ELSS | HDFC ELSS Tax Saver Fund | https://www.hdfcfund.com/explore/mutual-funds/hdfc-elss-tax-saver/direct |
+| 4 | Small Cap | HDFC Small Cap Fund | https://www.hdfcfund.com/explore/mutual-funds/hdfc-small-cap-fund/direct |
+| 5 | Hybrid (BAF) | HDFC Balanced Advantage Fund | https://www.hdfcfund.com/explore/mutual-funds/hdfc-balanced-advantage-fund/direct |
 
-These five URLs make up the source list deliverable (`sources.csv` / `sources.md`).
-
-> **Gap:** these scheme pages do not explain how to download a capital-gains or account statement, and they do not provide an educational link for refusals. See [Open questions](#13-open-questions) for the proposed fix: a small set of optional official pages from HDFC MF, AMFI, SEBI, CAMS or KFintech.
+The full corpus is 18 official sources: these 5 scheme pages, 5 KIMs, the monthly factsheet, 3 HDFC MF statement guides, 3 SEBI investor pages and 1 AMFI page. They make up the source list deliverable ([sources.md](../sources.md) / `sources.csv`). The statement guides answer "How to download a capital-gains statement?", and the factsheet is the link for performance questions.
 
 ## 6. Functional requirements
 
@@ -117,7 +117,7 @@ Suggested example questions:
 | Layer | Choice | Notes |
 |---|---|---|
 | Language | Python 3.11+ | |
-| Loading | `requests` + `BeautifulSoup` | Groww pages are Next.js; parse the embedded JSON (`__NEXT_DATA__`) if the visible HTML is incomplete. Fall back to Playwright only if needed. |
+| Loading | `curl_cffi` + `BeautifulSoup` + `pypdf` | HDFC MF pages are Next.js; parse the embedded JSON (`__NEXT_DATA__`). hdfcfund.com rejects plain HTTP clients, so `curl_cffi` impersonates Chrome. KIMs and the factsheet are PDFs. |
 | Chunking | Custom, section-aware (see 7.2) | |
 | Embeddings | `sentence-transformers/all-MiniLM-L6-v2` | 384-dim, runs locally on CPU, **max input 256 tokens** |
 | Vector DB | ChromaDB (persistent, local) | Cosine distance |
@@ -182,7 +182,7 @@ The source pages are **semi-structured**: they are mostly labeled key facts (exp
 | # | Deliverable | Format |
 |---|---|---|
 | 1 | Working prototype | Hosted Streamlit link, or a demo video of 3 minutes or less |
-| 2 | Source list (the 5 URLs) | `sources.csv` / `sources.md` |
+| 2 | Source list (18 official URLs) | `sources.csv` / `sources.md` |
 | 3 | README | Setup steps, scope (AMC and schemes), architecture, known limits |
 | 4 | Sample Q&A | `sample_qa.md` with 5–10 queries, the assistant's answers and links (include at least one refusal and one PII block) |
 | 5 | Disclaimer snippet | The text used in the UI: "Facts-only. No investment advice." |
@@ -217,15 +217,15 @@ The source pages are **semi-structured**: they are mostly labeled key facts (exp
 
 ## 11. Known limitations
 - **Point-in-time data.** Expense ratios and AUM change. Answers reflect the last ingestion date, not live values.
-- **Small corpus.** Five pages, so many valid MF questions will return "not found".
-- **Scraping fragility.** A change to the Groww page structure can break the loader.
+- **Small corpus.** 18 sources, so many valid MF questions will return "not found".
+- **Scraping fragility.** A change to the hdfcfund.com page structure or its bot protection can break the loader.
 - **Heuristic guardrails.** Keyword and regex checks can miss cleverly phrased advice requests or unusual PII formats.
 - **English only.**
 
 ## 12. Milestones
 | # | Milestone | Output |
 |---|---|---|
-| M1 | Ingestion | Fetch and parse the 5 pages, save raw snapshots |
+| M1 | Ingestion | Fetch and parse the sources, save raw snapshots |
 | M2 | Chunk + embed + store | ChromaDB populated; inspect sample chunks |
 | M3 | Retrieval + generation | CLI Q&A working with citations |
 | M4 | Guardrails | PII block, advice refusal, not-found handling |
@@ -233,9 +233,7 @@ The source pages are **semi-structured**: they are mostly labeled key facts (exp
 | M6 | Deliverables | README, sources.csv, sample_qa.md, hosting or demo video |
 
 ## 13. Open questions
-1. **Source compliance.** The brief says to use official AMC/SEBI/AMFI pages and no third-party sources, but the provided URLs are Groww, which is a distributor. For the demo, do we accept Groww as given, or swap in or add the matching HDFC MF scheme pages and factsheets?
-2. **Statement downloads and educational links.** Should we add a few official pages beyond the five scheme URLs? Candidates:
-   - the HDFC MF, CAMS or KFintech statement page, to answer "How to download a capital-gains statement?";
-   - an AMFI investor-education page, as the refusal link.
+1. ~~**Source compliance.**~~ **Resolved 2026-10-02:** Groww replaced by official HDFC MF, SEBI and AMFI sources (see the note at the top).
+2. ~~**Statement downloads and educational links.**~~ **Resolved 2026-10-02:** three HDFC MF statement guides added; the refusal link stays SEBI's investor site.
 3. **LLM provider.** Which model or API is available for the class, and is there a budget?
 4. **Hosting.** Streamlit Community Cloud, or a local demo plus video?

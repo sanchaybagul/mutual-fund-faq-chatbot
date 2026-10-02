@@ -28,7 +28,12 @@ def test_bluechip_is_not_an_alias():
 
 def test_needs_scheme_and_other_amc():
     assert needs_scheme("What is the expense ratio?")
+    assert needs_scheme("exit load?")
     assert not needs_scheme("How do I download my capital gains statement?")
+    # Definitions are answered from SEBI/AMFI pages, not by asking which scheme.
+    assert not needs_scheme("What is an exit load?")
+    assert not needs_scheme("What is a riskometer?")
+    assert not needs_scheme("Explain expense ratio")
     assert mentions_other_amc("Expense ratio of Axis Small Cap Fund?")
     assert not mentions_other_amc("Expense ratio of HDFC Small Cap Fund?")
 
@@ -43,16 +48,43 @@ def test_out_of_scope_not_found(q):
     assert retrieve(q).status == "not_found"
 
 
-@pytest.mark.parametrize("q,slug,field", [
-    ("What is the expense ratio of HDFC Flexi Cap Fund?", "hdfc-flexi-cap", "Expense ratio: 0.77%"),
-    ("ELSS lock-in?", "hdfc-elss", "Lock-in: 3 years"),
-    ("Exit load of HDFC Small Cap Fund?", "hdfc-small-cap", "Exit load"),
-    ("Minimum SIP for HDFC Balanced Advantage Fund?", "hdfc-baf", "₹100"),
-    ("Riskometer of HDFC Large Cap?", "hdfc-large-cap", "Very High"),
+@pytest.mark.parametrize("q,scheme,top_id,field", [
+    ("What is the expense ratio of HDFC Flexi Cap Fund?", "HDFC Flexi Cap Fund",
+     "hdfc-flexi-cap:expense-ratio-and-fund-size:0", "0.77%"),
+    ("Exit load of HDFC Small Cap Fund?", "HDFC Small Cap Fund", "hdfc-small-cap:exit-load:0", "1.00%"),
+    ("Minimum SIP for HDFC Balanced Advantage Fund?", "HDFC Balanced Advantage Fund",
+     "hdfc-baf:minimum-investment-and-lock-in:0", "₹100"),
+    ("Riskometer of HDFC Large Cap?", "HDFC Large Cap Fund",
+     "hdfc-large-cap:riskometer-and-benchmark:0", "Very High"),
 ])
-def test_field_questions_retrieve_right_scheme_and_fact(q, slug, field):
+def test_field_questions_rank_the_scheme_page_first(q, scheme, top_id, field):
     r = retrieve(q)
     assert r.status == "ok"
-    assert r.chunks[0]["id"].startswith(slug)          # right scheme at rank 1
-    assert any(c["id"] == f"{slug}:key-facts:0" for c in r.chunks)  # facts card in top-k
-    assert field in r.chunks[0]["text"]                # rank-1 chunk contains the answer
+    assert all(c["metadata"]["scheme"] == scheme for c in r.chunks)  # only that scheme's documents
+    assert r.chunks[0]["id"] == top_id                              # scheme page section at rank 1
+    assert field in r.chunks[0]["text"]                             # and it contains the answer
+
+
+def test_elss_lock_in_found_in_scheme_documents():
+    r = retrieve("ELSS lock-in?")
+    assert r.status == "ok"
+    assert all(c["metadata"]["scheme"] == "HDFC ELSS Tax Saver Fund" for c in r.chunks)
+    assert any("3 years" in c["text"] for c in r.chunks)
+
+
+@pytest.mark.parametrize("q,slug", [
+    ("How do I download my capital gains statement?", "hdfc-capital-gains"),
+    ("Is there a charge for the account statement?", "hdfc-cas"),
+    ("What is a riskometer?", "sebi-riskometer"),
+    ("What is exit load?", "sebi-exit-load"),
+    ("What is a lock-in period?", "amfi-lock-in"),
+])
+def test_general_questions_retrieve_general_sources(q, slug):
+    r = retrieve(q)
+    assert r.status == "ok"
+    assert r.chunks[0]["id"].startswith(slug)
+
+
+def test_kim_answers_redemption_questions():
+    r = retrieve("How long does redemption payout take for HDFC Large Cap Fund?")
+    assert r.chunks[0]["id"] == "kim-hdfc-large-cap:redemption-payout-timeline:0"

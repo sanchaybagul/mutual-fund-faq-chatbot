@@ -11,13 +11,14 @@ import pytest
 from src.pipeline import answer
 from src.postprocess import split_sentences
 
-# 10 factual questions across all 5 schemes, with a substring the answer must contain.
+# 10 factual questions across all 5 schemes, with a substring the answer must contain
+# (values from the official HDFC MF pages snapshotted in data/raw/).
 FACTS = [
     ("What is the expense ratio of HDFC Flexi Cap Fund?", "0.77%"),
-    ("What is the expense ratio of HDFC Large Cap Fund?", "1.03%"),
+    ("What is the expense ratio of HDFC Large Cap Fund?", "1.04%"),
     ("What is the lock-in period for HDFC ELSS Tax Saver Fund?", "3 years"),
     ("What is the minimum SIP for HDFC ELSS Tax Saver Fund?", "₹500"),
-    ("What is the exit load on HDFC Small Cap Fund?", "1%"),
+    ("What is the exit load on HDFC Small Cap Fund?", "1.00%"),
     ("What is the benchmark of HDFC Small Cap Fund?", "BSE 250 SmallCap"),
     ("What is the minimum SIP for HDFC Balanced Advantage Fund?", "₹100"),
     ("What is the exit load of HDFC Balanced Advantage Fund?", "15%"),
@@ -25,6 +26,7 @@ FACTS = [
     ("Who are the fund managers of HDFC Flexi Cap Fund?", "Dhruv Muchhal"),
 ]
 URL_RE = re.compile(r"https?://")
+OFFICIAL = ("https://www.hdfcfund.com/", "https://files.hdfcfund.com/")
 APP_PATH = Path(__file__).resolve().parent.parent / "app.py"
 
 
@@ -43,7 +45,7 @@ def test_1_factual_accuracy_at_least_9_of_10(fact_results):
 @pytest.mark.llm
 def test_1_every_answer_has_one_citation_and_date(fact_results):
     for q, _, r in fact_results:
-        assert r.citation_url and r.citation_url.startswith("https://groww.in/mutual-funds/"), q
+        assert r.citation_url and r.citation_url.startswith(OFFICIAL), q
         assert not URL_RE.search(r.text), f"extra URL in answer text: {q}"
         assert r.last_updated, q
         assert "Last updated from sources:" in r.render(), q
@@ -63,13 +65,32 @@ def test_2_advice_refused_with_edu_link():
 
 def test_3_performance_redirects_to_factsheet_without_numbers():
     r = answer("Which fund gave better returns, large cap or flexi cap?")
-    assert r.kind == "performance" and r.citation_url
+    assert r.kind == "performance" and "Factsheet" in r.citation_url
     assert not re.search(r"\d+(\.\d+)?\s*%", r.text)  # no computed returns
 
 
 def test_4_pii_blocked_and_not_echoed():
     r = answer("My PAN is ABCDE1234F, what's my balance?")
     assert r.kind == "pii_block" and "ABCDE1234F" not in r.render()
+
+
+# Questions answered from the general (non-scheme) sources: HDFC MF service pages, SEBI, AMFI.
+GENERAL = [
+    ("How do I download my capital gains statement?", "hdfcfund.com/learn/blog/how-get-capital-gain"),
+    ("Is there a fee for downloading my account statement?", "hdfcfund.com/services/consolidated-account"),
+    ("What is a riskometer?", "investor.sebi.gov.in/riskometer"),
+    ("What is exit load?", "investor.sebi.gov.in/exit_load"),
+    ("What is a lock-in period?", "mutualfundssahihai.com"),
+]
+
+
+@pytest.mark.llm
+@pytest.mark.parametrize("q,url_part", GENERAL)
+def test_1_general_questions_cite_the_right_page(q, url_part):
+    r = answer(q)
+    assert r.kind == "answer", r.text
+    assert url_part in r.citation_url
+    assert len(split_sentences(r.text)) <= 3
 
 
 @pytest.mark.llm

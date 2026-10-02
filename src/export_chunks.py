@@ -13,18 +13,19 @@ OUT = ROOT / "data" / "chunks.md"
 
 def main() -> None:
     res = get_collection().get(include=["documents", "metadatas"])
-    by_scheme = defaultdict(list)
+    by_doc = defaultdict(list)
     for cid, doc, meta in zip(res["ids"], res["documents"], res["metadatas"]):
-        by_scheme[meta["scheme"]].append((cid, doc, meta))
+        by_doc[(meta["scheme"], meta["title"])].append((cid, doc, meta))
 
     lines = ["# Chunks stored in ChromaDB", "",
              f"Collection: `hdfc_mf_faq` · {len(res['ids'])} chunks · "
              f"exported from `data/chroma/`", ""]
-    for scheme in sorted(by_scheme):
-        items = sorted(by_scheme[scheme], key=lambda x: (x[2]["chunk_type"] != "facts_card", x[0]))
+    for scheme, title in sorted(by_doc):
+        items = sorted(by_doc[(scheme, title)], key=lambda x: (x[2]["chunk_type"] != "facts_card", x[0]))
         meta0 = items[0][2]
-        lines += [f"## {scheme} ({len(items)} chunks)", "",
-                  f"Source: {meta0['source_url']} · fetched {meta0['fetched_at']}", ""]
+        lines += [f"## {title} ({len(items)} chunks)", "",
+                  f"Scheme: {scheme} · type: `{meta0['source_type']}` · source: {meta0['source_url']} · "
+                  f"fetched {meta0['fetched_at']}", ""]
         for cid, doc, meta in items:
             lines += [f"### `{cid}`", "",
                       f"*{meta['chunk_type']} · section: {meta['section']} · {n_tokens(doc)} tokens*", "",

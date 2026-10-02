@@ -18,7 +18,7 @@ QUERIES = [
     "Which fund gave better returns, large cap or flexi cap?",
     "My PAN is ABCDE1234F, what is my balance?",
     "Who is the CEO of HDFC Small Cap Fund's AMC?",
-    "What is the expense ratio?",
+    "What is a riskometer?",
 ]
 LABELS = {"answer": "Factual answer", "advice": "Advice refused", "performance": "Performance redirect",
           "pii_block": "PII blocked", "not_found": "Not in sources", "clarify": "Clarification",

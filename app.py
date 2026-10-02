@@ -13,7 +13,7 @@ EXAMPLES = [
     ("What is the expense ratio of HDFC Flexi Cap Fund?", ":material/percent:"),
     ("What is the lock-in period for HDFC ELSS Tax Saver Fund?", ":material/lock_clock:"),
     ("What is the exit load on HDFC Small Cap Fund?", ":material/logout:"),
-    ("What is the minimum SIP for HDFC Balanced Advantage Fund?", ":material/savings:"),
+    ("How do I download my capital gains statement?", ":material/receipt_long:"),
 ]
 PII_PLACEHOLDER = "Message hidden — it contained personal data"
 
@@ -58,7 +58,9 @@ with st.container(key="topbar"):
             st.markdown("**Schemes covered** (Direct – Growth)")
             for scheme, src in scheme_sources().items():
                 st.markdown(f"- [{scheme}]({src['url']})")
-            st.caption("Answers come only from these public pages.")
+            st.caption("Answers come only from official HDFC Mutual Fund pages, KIMs and factsheet, "
+                       "plus SEBI and AMFI investor-education pages ([full source list]"
+                       "(https://github.com/sanchaybagul/mutual-fund-faq-chatbot/blob/main/sources.md)).")
     with toggle_col:
         with st.container(key="theme_toggle"):
             st.toggle("Dark mode", key="dark")

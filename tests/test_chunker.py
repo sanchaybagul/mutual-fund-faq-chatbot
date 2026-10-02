@@ -1,3 +1,4 @@
+import re
 from collections import Counter
 
 import pytest
@@ -31,15 +32,37 @@ def test_section_chunks_within_target(chunks):
             assert len(tok.encode(c.text, add_special_tokens=False)) <= CHUNK_TOKENS, c.id
 
 
-def test_every_chunk_has_scheme_prefix(chunks):
+def test_every_chunk_has_document_prefix(chunks):
     for c in chunks:
-        assert c.text.startswith(f"[{c.metadata['scheme']} – Direct Growth] ["), c.id
+        assert c.text.startswith(f"[{c.metadata['title']}] [{c.metadata['section']}]"), c.id
 
 
 def test_one_facts_card_per_scheme(docs, chunks):
     cards = Counter(c.metadata["scheme"] for c in chunks if c.metadata["chunk_type"] == "facts_card")
-    assert set(cards) == {d.scheme for d in docs}
-    assert all(n == 1 for n in cards.values())
+    assert set(cards) == {d.scheme for d in docs if d.source_type == "scheme_page"}
+    assert len(cards) == 5 and all(n == 1 for n in cards.values())
+
+
+def test_every_source_produces_chunks(chunks):
+    from src.loader import load_sources
+
+    source_slugs = {s["slug"] for s in load_sources()}
+    assert len(source_slugs) >= 15                                  # brief: 15-25 official pages
+    covered = {s for s in source_slugs if any(c.id.startswith(s) for c in chunks)}
+    assert covered == source_slugs
+
+
+def test_general_sources_are_not_tied_to_a_scheme(chunks):
+    general = {c.metadata["source_type"] for c in chunks if c.metadata["scheme"] == "General"}
+    assert general == {"statement_guide", "regulator"}
+
+
+def test_no_performance_data_in_corpus(chunks):
+    """PRD GR-2: returns, NAVs, risk ratios and holdings are never ingested."""
+    banned = re.compile(r"NAV PER UNIT|Sharpe|Standard Deviation|since inception\s*\d|CAGR|"
+                        r"% to\s*NAV|Performance of the Scheme", re.I)
+    for c in chunks:
+        assert not banned.search(c.text), c.id
 
 
 def test_ids_unique_and_deterministic(docs, chunks):
@@ -49,7 +72,7 @@ def test_ids_unique_and_deterministic(docs, chunks):
 
 
 def test_metadata_complete(chunks):
-    keys = {"scheme", "category", "section", "chunk_type", "source_url", "source_type", "fetched_at"}
+    keys = {"scheme", "title", "category", "section", "chunk_type", "source_url", "source_type", "fetched_at"}
     for c in chunks:
         assert keys <= c.metadata.keys(), c.id
         assert all(c.metadata[k] for k in keys), c.id

@@ -1,9 +1,10 @@
 {
   "slug": "hdfc-elss",
-  "url": "https://groww.in/mutual-funds/hdfc-elss-tax-saver-fund-direct-plan-growth",
-  "fetched_at": "2026-09-27",
+  "url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-elss-tax-saver/direct",
+  "fetched_at": "2026-10-02",
   "status": 200,
+  "format": "html",
   "has_next_data": true,
-  "html_bytes": 452129,
-  "visible_text_chars": 17936
+  "bytes": 169259,
+  "visible_text_chars": 10730
 }

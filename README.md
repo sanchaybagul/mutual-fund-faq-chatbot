@@ -1,17 +1,19 @@
 # HDFC Mutual Fund Facts Assistant (RAG Chatbot)
 
-A small retrieval-augmented chatbot that answers **factual** questions about five HDFC Mutual Fund schemes, including:
+A small retrieval-augmented chatbot that answers **factual** questions about five HDFC Mutual Fund schemes and related investor services, using only official public pages from HDFC Mutual Fund, SEBI and AMFI. It covers:
 
 - expense ratio, exit load and minimum SIP;
 - ELSS lock-in, riskometer and benchmark;
-- fund managers and AUM.
+- fund managers, AUM, minimum redemption and redemption payout time;
+- how to download account and capital-gains statements;
+- basic terms such as riskometer, exit load and lock-in period.
 
 Every answer:
 - is at most 3 sentences long;
-- cites exactly one source link;
+- cites exactly one official source link;
 - shows when the sources were last updated.
 
-The bot refuses investment advice and performance comparisons, and blocks any personal data.
+The bot refuses investment advice and performance comparisons (linking to the official factsheet for performance), and blocks any personal data.
 
 > **Facts-only. No investment advice.**
 
@@ -19,7 +21,7 @@ Built as a class demo. See [docs/PRD.md](docs/PRD.md), [docs/architecture.md](do
 
 ## Scope
 
-**AMC:** HDFC Mutual Fund. All schemes are **Direct – Growth** plans. The full list is in [sources.md](sources.md).
+**AMC:** HDFC Mutual Fund. All schemes are **Direct – Growth** plans.
 
 | Scheme | Category |
 |---|---|
@@ -28,6 +30,16 @@ Built as a class demo. See [docs/PRD.md](docs/PRD.md), [docs/architecture.md](do
 | HDFC ELSS Tax Saver Fund | ELSS |
 | HDFC Small Cap Fund | Small Cap |
 | HDFC Balanced Advantage Fund | Hybrid (BAF) |
+
+**Corpus: 18 official public sources.** The full list with URLs is in [sources.md](sources.md) / [sources.csv](sources.csv). No third-party sites or blogs are used.
+
+| Source type | Count | Publisher | Used for |
+|---|---|---|---|
+| Scheme pages (HTML) | 5 | HDFC MF | Current TER, exit load, minimum SIP, lock-in, riskometer, benchmark, AUM, fund managers, FAQs |
+| Key Information Memoranda (PDF, Nov 21, 2025) | 5 | HDFC MF | Objective, plans/options, minimum application and redemption, payout timeline, load structure, account statements |
+| Monthly factsheet (PDF, August 2026) | 1 | HDFC MF | Fund facts per scheme; the link given for performance questions |
+| Statement guides (HTML) | 3 | HDFC MF | Downloading account, consolidated and capital-gains statements |
+| Investor education (HTML) | 4 | SEBI (3), AMFI (1) | Riskometer, exit load, mutual fund basics, lock-in period |
 
 ## How it works
 
@@ -38,30 +50,23 @@ QUERY (online)        question → Guardrails → Scheme detection → Retrieve 
 
 | Stage | Implementation |
 |---|---|
-| Load | `src/loader.py`: fetches each page once and saves HTML + embedded JSON to `data/raw/` |
-| Parse | `src/parser.py`: extracts fields from the page JSON (see [docs/field_map.md](docs/field_map.md)). Return and NAV data is skipped on purpose. |
+| Load | `src/loader.py`: fetches each source once and saves HTML (+ embedded JSON) or PDF to `data/raw/`. Uses `curl_cffi` with a Chrome fingerprint because hdfcfund.com rejects plain HTTP clients. |
+| Parse | `src/parser.py`: one parser per source type. Scheme pages: the page's JSON ([docs/field_map.md](docs/field_map.md)). KIMs: selected numbered sections. Factsheet: each scheme's fund-facts block. Guides: main article text. Returns, NAVs, risk ratios and holdings are skipped on purpose. |
 | Chunk | `src/chunker.py`: section-aware chunks (see below) |
-| Embed | `sentence-transformers/all-MiniLM-L6-v2` (384 dimensions, runs locally) |
-| Store | ChromaDB, persisted in `data/chroma/` (42 chunks) |
-| Retrieve | `src/retriever.py`: detects the scheme from its name or alias, filters by scheme, and applies a similarity cutoff of 0.25 |
+| Embed | `sentence-transformers/all-MiniLM-L6-v2` (384 dimensions, runs locally via ONNX) |
+| Store | ChromaDB, persisted in `data/chroma/` (162 chunks from 22 documents) |
+| Retrieve | `src/retriever.py`: detects the scheme from its name or alias and filters to that scheme's documents; questions with no scheme search everything, including the general pages. Similarity cutoff 0.25. |
 | Generate | `src/generator.py`: Groq LLM with a strict "answer only from context" prompt |
 | Post-process | `src/postprocess.py`: 3-sentence cap, advice check, citation from chunk metadata (never from the LLM) |
 
 ### Chunking strategy
 
-The Groww pages are semi-structured: mostly labelled facts with a few prose sections. We therefore use structure-aware chunks instead of fixed-size ones.
+The sources are semi-structured: labelled facts, numbered KIM sections, and short articles. We use structure-aware chunks instead of fixed-size ones.
 
-- **One "facts card" per scheme.** It lists all the key fields as `Label: value` lines and answers most questions.
-- **One chunk per section:**
-  - Objective
-  - Overview
-  - Minimum Investment
-  - Exit Load / Stamp Duty / Tax
-  - Riskometer & Benchmark
-  - Fund Management
-  - Fund House & Registrar
-- **Long sections are split** by paragraph, then by sentence, into chunks of at most 200 tokens with a 30-token overlap. This stays under MiniLM's 256-token input limit.
-- **Every chunk is prefixed** with `[<Scheme> – Direct Growth] [<Section>]` and stores its scheme, section, source URL and fetch date.
+- **One "facts card" per scheme** from its scheme page, with the key fields as `Label: value` lines.
+- **One chunk per section**: scheme-page sections (expense ratio, exit load, minimum investment, riskometer and benchmark, fund management, FAQs), KIM sections, the factsheet fund-facts block, and each guide article.
+- **Long sections are split** by paragraph, then by sentence, into chunks of at most 200 tokens with a 30-token overlap. Every chunk stays under MiniLM's 256-token input limit.
+- **Every chunk is prefixed** with `[<Document>] [<Section>]`, e.g. `[HDFC Small Cap Fund – Key Information Memorandum dated November 21, 2025] [Benchmark Index]`, and stores its scheme (or `General`), source type, source URL and fetch date.
 
 To browse the stored chunks, run `python -m src.export_chunks`, which writes them to `data/chunks.md`.
 
@@ -70,10 +75,10 @@ To browse the stored chunks, run `python -m src.export_chunks`, which writes the
 | Check | Result |
 |---|---|
 | **PII**: PAN, Aadhaar, phone, email, OTP, account or folio numbers | Blocked. The message is never sent to the LLM and is hidden in the chat. |
-| **Performance**: returns, NAV, CAGR, "performed" | No numbers. The user gets the scheme's page instead. |
+| **Performance**: returns, NAV, CAGR, "performed" | No numbers. The user gets the official HDFC MF factsheet link. |
 | **Advice**: "should I", best or better, "good for me", recommend | Polite refusal plus a SEBI investor-education link |
 | **Off-topic**: no scheme name and no mutual-fund terms | Scope message |
-| **Scheme-specific question with no scheme named** | Asks which scheme |
+| **Scheme-specific question with no scheme named** ("What is the exit load?") | Asks which scheme. A definition question ("What is an exit load?") is answered from SEBI/AMFI instead. |
 | **Another AMC named** (SBI, Axis…) | "Not found". It is never answered with HDFC data. |
 
 ## Setup
@@ -95,7 +100,7 @@ Useful commands:
 
 | Command | What it does |
 |---|---|
-| `python -m src.ingest --reset --fetch` | Re-download the 5 pages, then rebuild the vector store |
+| `python -m src.ingest --reset --fetch` | Re-download all 18 sources, then rebuild the vector store |
 | `python -m src.retriever "exit load small cap"` | Show retrieved chunks and similarity scores |
 | `python -m src.generator "…"` | Ask one question from the terminal |
 | `python -m src.export_chunks` | Dump all stored chunks to `data/chunks.md` |
@@ -114,16 +119,18 @@ Answers are generated by **Groq** (`qwen/qwen3.8-27b` by default) in `src/genera
 ## Testing and evaluation
 
 ```bash
-pytest                  # all 106 tests (~25 s; the PRD acceptance tests call Groq)
-pytest -m "not llm"     # 102 offline tests (~10 s)
+pytest                  # all 121 tests (~70 s; the PRD acceptance tests call Groq)
+pytest -m "not llm"     # offline tests only
 ```
 
 | Check | Result |
 |---|---|
-| PRD §10 acceptance: 10 factual questions across all 5 schemes | **Pass** (≥9/10 required). Every answer has 1 citation and the "Last updated" line, and is at most 3 sentences |
+| PRD §10 acceptance: 10 factual questions across all 5 schemes | **Pass** (≥9/10 required). Every answer has 1 official citation and the "Last updated" line, and is at most 3 sentences |
+| General questions (statements, riskometer, exit load, lock-in) | Each cites the right HDFC MF / SEBI / AMFI page |
 | Advice / performance / PII / out-of-corpus / other-AMC / UI elements | All pass |
-| Retrieval eval (16 labelled questions) | **hit@1 88%**, **hit@4 100%** |
-| Latency (UI, after warm-up) | About 4 s per answer |
+| No performance data in the corpus | Checked by a test over every chunk |
+| Retrieval eval (21 labelled questions) | **hit@1 90%**, **hit@4 100%** |
+| Similarity threshold | In-scope minimum 0.355 vs. out-of-scope maximum 0.238; cutoff 0.25 |
 
 Sample outputs are in [sample_qa.md](sample_qa.md).
 
@@ -132,7 +139,7 @@ Sample outputs are in [sample_qa.md](sample_qa.md).
 | Deliverable | Location |
 |---|---|
 | Working prototype | `streamlit run app.py` (local). See the demo script below for the ≤3-min video. |
-| Source list (5 URLs) | [sources.md](sources.md), [sources.csv](sources.csv) |
+| Source list (18 official URLs) | [sources.md](sources.md), [sources.csv](sources.csv) |
 | README | this file |
 | Sample Q&A | [sample_qa.md](sample_qa.md) |
 | Disclaimer snippet | [DISCLAIMER.md](DISCLAIMER.md) |
@@ -141,23 +148,25 @@ Sample outputs are in [sample_qa.md](sample_qa.md).
 
 | Time | Action | Shows |
 |---|---|---|
-| 0:00 | Open the app | Welcome line, 3 example questions, disclaimer |
-| 0:20 | Click "expense ratio of HDFC Flexi Cap Fund" | Cited answer with its date |
+| 0:00 | Open the app | Welcome line, example questions, disclaimer |
+| 0:20 | Click "expense ratio of HDFC Flexi Cap Fund" | Cited answer from the HDFC scheme page, with its date |
 | 0:40 | "What is the lock-in for tax saver fund?" | Alias handling |
-| 1:00 | "Minimum SIP for HDFC Balanced Advantage Fund?" | Hybrid scheme |
-| 1:20 | "Should I buy HDFC Small Cap?" | Advice refusal with educational link |
-| 1:40 | "Which gave better returns, large cap or flexi cap?" | Performance redirect |
+| 1:00 | Click "How do I download my capital gains statement?" | Answer from an HDFC MF service page |
+| 1:15 | "What is a riskometer?" | Definition from SEBI's investor site |
+| 1:30 | "Should I buy HDFC Small Cap?" | Advice refusal with educational link |
+| 1:45 | "Which gave better returns, large cap or flexi cap?" | Performance redirect to the official factsheet |
 | 2:00 | "My PAN is ABCDE1234F, what's my balance?" | PII block, message hidden |
-| 2:20 | "What is the exit load?" | Clarify prompt |
-| 2:40 | Terminal: `python -m src.ingest --reset`, then open `data/chunks.md` | The RAG ingestion stages |
+| 2:15 | "What is the exit load?" | Clarify prompt |
+| 2:30 | Terminal: `python -m src.ingest --reset`, then open `data/chunks.md` | The RAG ingestion stages |
 
 ## Known limits
 
 - **Point-in-time data.** Expense ratios, AUM and fund managers change. Answers reflect the snapshot date shown in each answer.
-- **Small corpus.** Only 5 scheme pages are ingested, so many valid questions return "not found".
-- **Statement downloads aren't covered.** The scheme pages don't explain how to download a capital-gains statement. That question returns "not found" with a link to hdfcfund.com.
-- **Groww is a distributor, not the AMC.** The brief supplied these URLs. Official AMC, AMFI or SEBI documents (factsheets, KIM/SID) would be stronger sources.
-- **Scraping is fragile.** A change to Groww's page structure could break the parser. The saved snapshots let you rebuild offline.
+- **Sources can disagree because they have different dates.** The scheme page shows today's total TER, the factsheet shows the base expense ratio as on August 31, 2026, and the KIM shows FY 2024-25 actuals. Each chunk says which document and date it comes from, and the prompt prefers the scheme page.
+- **Small corpus.** 18 sources, so many valid questions (e.g. stamp duty, registrar, taxation) return "not found".
+- **Generic guides.** The capital-gains guide covers CAMS, KFintech and AMC websites in general. It isn't a step-by-step HDFC portal walkthrough.
+- **Scraping is fragile.** hdfcfund.com blocks plain HTTP clients, and a site redesign could break the parser. The saved snapshots in `data/raw/` let you rebuild offline.
+- **PDF text extraction is imperfect.** Some KIM words come out split (e.g. "lev ied"). The facts themselves are intact.
 - **Guardrails are rule-based.** Cleverly phrased advice requests or unusual PII formats could slip through. The post-LLM advice scan is a second line of defence.
 - **Needs a network connection and a Groq key.** Free-tier rate limits apply.
 - English only.
@@ -167,19 +176,19 @@ Sample outputs are in [sample_qa.md](sample_qa.md).
 ```
 app.py                 Streamlit UI (layout + state)
   src/ui.py            theme tokens (light/dark), CSS, HTML components
-sources.csv / .md      corpus registry
+sources.csv / .md      corpus registry (18 official sources)
 sample_qa.md           demo Q&A (real outputs)
 DISCLAIMER.md          UI disclaimer snippet
 src/
   config.py            paths, models, thresholds, env / secrets
-  loader.py            fetch + snapshot pages
-  parser.py            JSON/HTML → SchemeDoc
+  loader.py            fetch + snapshot pages and PDFs
+  parser.py            scheme page / KIM / factsheet / guide → SourceDoc
   chunker.py           section-aware chunking
   embedder.py          MiniLM embeddings
   store.py             ChromaDB wrapper
   ingest.py            Load → Parse → Chunk → Embed → Store
   export_chunks.py     dump stored chunks to data/chunks.md
-  schemes.py           scheme aliases, other-AMC detection
+  schemes.py           scheme list and aliases, definition questions, other-AMC detection
   retriever.py         scheme-aware retrieval + threshold
   guardrails.py        PII / performance / advice / off-topic
   generator.py         Groq LLM call
@@ -187,7 +196,7 @@ src/
   templates.py         fixed refusal / fallback text
   pipeline.py          answer(question) → Response
 scripts/               eval_retrieval, tune_threshold, make_sample_qa
-tests/                 106 tests (unit, routing, generator, PRD acceptance, UI)
-data/raw/              page snapshots     data/chroma/  vector store
+tests/                 121 tests (unit, routing, generator, PRD acceptance, UI)
+data/raw/              source snapshots   data/chroma/  vector store
 docs/                  PRD, architecture, implementation plan, field map
 ```

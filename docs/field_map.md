@@ -1,56 +1,53 @@
-# Field Map: Groww `__NEXT_DATA__` → SchemeDoc
+# Field Map: HDFC MF scheme page `__NEXT_DATA__` → SourceDoc
 
-Produced during Phase 1 by inspecting the 5 snapshots in `data/raw/*.json` (fetched 2026-09-27). Phase 2 (`src/parser.py`) uses this as its `FIELD_PATHS` reference.
+Produced by inspecting the 5 scheme-page snapshots in `data/raw/hdfc-*.json` (fetched 2026-10-02). `parse_scheme_page()` in `src/parser.py` follows this map. (The previous version of this file mapped the Groww pages used before the corpus moved to official sources.)
 
-All fields below are under `props.pageProps.mfServerSideData` (referred to as `m`).
+All paths are under `props.pageProps.singleFundResponse.data`. `details` is a list of one-key blocks; the parser merges them into one dict, so `details.Overview` means "the block whose key is `Overview`".
 
 ## Target fields
 
 | Field | JSON path | Example (Small Cap) | Notes |
 |---|---|---|---|
-| `scheme_name` | `m.scheme_name` | `HDFC Small Cap Fund Direct Growth` | |
-| `fund_house` | `m.fund_house` | `HDFC Mutual Fund` | |
-| `category` | `m.category` + `m.sub_category` | `Equity` / `Small Cap` | BAF: `Hybrid` / `Dynamic Asset Allocation` |
-| `expense_ratio` | `m.expense_ratio` | `"0.78"` | A bare string, so append `%` |
-| `exit_load` | `m.exit_load` | `Exit load of 1% if redeemed within 1 year` | ELSS: `Nil`. Flexi Cap has a trailing `\n`, so strip it. |
-| `min_sip` | `m.min_sip_investment` | `100` | An int, so format as `₹100`. ELSS: `500`. |
-| `min_lumpsum` | `m.min_investment_amount` | `100` | ELSS: `500` |
-| `min_additional` | `m.mini_additional_investment` | `100` | |
-| `lock_in` | `m.lock_in` → `{years, months, days}` | all `null` | ELSS: `{years: 3, months: 0, days: 0}`, which should read "3 years". All nulls mean no lock-in. |
-| `riskometer` | **`m.return_stats[0].risk`** | `Very High` | ⚠ See the quirks below |
-| `benchmark` | `m.benchmark_name` (full) / `m.benchmark` (short) | `BSE 250 SmallCap Total Return Index` / `BSE 250 SmallCap TRI` | |
-| `aum` | `m.aum` | `41890.8613` | In ₹ crore. Format as `₹41,890.86 Cr`. |
-| `fund_managers` | `m.fund_manager_details[].person_name` (+ `date_from`, `education`, `experience`) | Dhruv Muchhal, Chirag Setalvad | ⚠ Use the list, not `m.fund_manager` |
-| `launch_date` | `m.launch_date` | `01-Jan-2013` | This is the Direct plan launch |
-| `objective` | `m.description` | `The scheme seeks to provide long-term capital appreciation…` | |
-| `stamp_duty` | `m.stamp_duty` | `0.005% (from July 1st, 2020)` | |
-| `tax_note` | `m.category_info.tax_impact` | `If you redeem within one year, returns are taxed at 20%…` | Generic equity tax text |
-| `rta` | `m.rta_details.rta_name` / `.website` | `Cams` / `www.camsonline.com` | Useful for "how to download a statement" (the statement is issued by the RTA) |
-| `sid_url` | `m.sid_url` | `https://www.hdfcfund.com` | Only the AMC homepage, not a deep link |
-| `plan_type` | `m.plan_type` | `Direct` | |
+| `category` | `meta.category` + category from `sources.csv` | `Equity` – `Small Cap` | ELSS: `Tax Saver`; BAF: `Hybrid` |
+| `expense_ratio` | `details.Overview.data.terDirecct` / `.terRegular` | `"0.79"` / `"1.56"` | Note the site's spelling `terDirecct`. Bare strings, so append `%`. This is the current total TER. |
+| `exit_load` | `details.Overview.data.exitLoad` (HTML) | `In respect of each purchase / switch-in of Units, an Exit Load of 1.00% …` | ELSS: `NIL`. Strip HTML and `●` bullets. `exitLoadValue` is always null. |
+| `min_sip` | `details.Overview.data.minimumSip` | `"100"` | ELSS: `500`. No lump-sum minimum on the page; the KIM has it. |
+| `lock_in` | `details.Overview.data.lockInValue` | `null` | ELSS: `3 years`. Null means no lock-in. (`lockIn` is a generic tooltip, not the value.) |
+| `riskometer` | `details.Overview.data.risk[0].name` | `Very High` | |
+| `benchmark` | `details.Overview.data.benchmark[0]` | `BSE 250 SmallCap Index (Total Returns Index)` | |
+| `aum` | `details.Overview.data.aum` + `.aumAsMonth` | `41,890.86` / `(31/08/2026)` | In ₹ crore, already formatted |
+| `fund_managers` | `details.managers[].managerName` + `.since`; `details.overseasManagers[]` | `Mr. Chirag Setalvad` `(Since 2014)` | ⚠ `since` is `(Since 1970)` when the site has no date; drop it |
+| `launch_date` | `details.Overview.data.inceptionDate` | `01/01/2013` | Direct Plan inception, not the scheme's |
+| About text | `details.Overview.overviewDescription` (HTML) | | Cut at "Why invest" / "Who can consider" / "How to start" |
+| FAQs | `details.faqs[]` (`title`, `description` HTML) | | Opinion-style FAQs are dropped (see below) |
 
-## Quirks found (important for Phase 2)
+## Quirks found
 
-1. **`m.nfo_risk` is stale.** It says "Moderately High" for all 5 schemes, while the page displays **"Very High Risk"**. Use `m.return_stats[0].risk`, which matches the page for all 5.
-2. **`m.category_info.sub_type` / `category_helper_text` is wrong.** It says "Contra" for all 5 schemes. Ignore it and use `m.sub_category`.
-3. **`m.fund_manager` lists only one name.** `m.fund_manager_details` has the full current list: 2 managers for most schemes and 6 for BAF.
-4. **The HTML "About" prose mixes AMC-level and fund-level data.** It gives AUM as "₹9,86,237 Cr" and the launch date as "10 Dec 1999", which are the **AMC's** figures, not the fund's. Take facts from the JSON, not that paragraph.
-5. **Keep these return and performance fields out of the corpus (PRD GR-2):**
-   - `stats`
-   - `return_stats` (except `.risk`)
-   - `sip_return`, `simple_return`
-   - `analysis` (its pros and cons are return-based)
-   - `nav`, `nav_date`
-   - `peerComparison`
-   - `groww_rating`
-6. **`m.historic_exit_loads`** holds older exit-load regimes. Ignore it and use only the current `m.exit_load`.
+1. **The TER here differs from the factsheet.** The scheme page shows the current total TER (Small Cap Direct 0.79%), while the factsheet shows the *base* expense ratio as on month-end (0.72% on August 31, 2026), and the KIM shows FY 2024-25 actuals (Direct 1.10% for ELSS). Chunks label which figure is which.
+2. **Fund manager dates use 1970 as a placeholder.** BAF's managers show `(Since 1970)`; the parser omits those dates.
+3. **Some FAQs are opinions**, e.g. "SIP or lump sum: which is better?", "Can beginners invest?", "Is this fund risky?". FAQs whose titles match *should / suitable / who can / better / advantage / risky / beginners / ideal / role / why invest* are skipped. The scheme name is removed before matching so "Balanced **Advantage**" FAQs are kept.
+4. **The "About" text includes marketing lines** such as "simple and performing scheme" and "30+ Years of Growth & Trust". Sentences that hint at performance are dropped.
+5. **Keep these out of the corpus (PRD GR-2):**
+   - `details.performanceDetails` / `performanceData`
+   - `details.portfolio`, `top_10_holdings`, `market_segmentation`
+   - `details.idcwData`
+   - the "Returns since inception" figure on the page
+6. **hdfcfund.com returns HTTP 403 to `requests` and curl.** It fingerprints the TLS handshake; the loader uses `curl_cffi` impersonating Chrome.
 
-## Current values snapshot (2026-09-27)
+## Current values snapshot (2026-10-02, scheme pages)
 
-| Scheme | Expense ratio | Exit load | Min SIP | Lock-in | Risk | Benchmark |
+| Scheme | TER (Direct) | Exit load | Min SIP | Lock-in | Risk | Benchmark |
 |---|---|---|---|---|---|---|
-| Large Cap | 1.03% | 1% if redeemed within 1 year | ₹100 | None | Very High | NIFTY 100 TRI |
-| Flexi Cap | 0.77% | 1% if redeemed within 1 year | ₹100 | None | Very High | NIFTY 500 TRI |
-| ELSS Tax Saver | 1.21% | Nil | ₹500 | 3 years | Very High | NIFTY 500 TRI |
-| Small Cap | 0.78% | 1% if redeemed within 1 year | ₹100 | None | Very High | BSE 250 SmallCap TRI |
-| Balanced Advantage | 0.78% | 1% within 1 year on units above 15% of the investment | ₹100 | None | Very High | NIFTY 50 Hybrid Composite Debt 50:50 Index |
+| Large Cap | 1.04% | 1% if redeemed within 1 year | ₹100 | None | Very High | NIFTY 100 (Total Return Index) |
+| Flexi Cap | 0.77% | 1% if redeemed within 1 year | ₹100 | None | Very High | NIFTY 500 Total Returns Index |
+| ELSS Tax Saver | 1.21% | Nil | ₹500 | 3 years | Very High | NIFTY 500 Total Returns Index |
+| Small Cap | 0.79% | 1% if redeemed within 1 year | ₹100 | None | Very High | BSE 250 SmallCap Index (TRI) |
+| Balanced Advantage | 0.78% | 15% of units free; 1% on the rest within 1 year | ₹100 | None | Very High | NIFTY 50 Hybrid Composite Debt 50:50 Index |
+
+## Other source types
+
+| Source type | Parser | What is kept |
+|---|---|---|
+| `kim` | `parse_kim()` | KIM sections 2 (type), 5 (objective), 9 (plans/options), 11 (minimum application/redemption), 12 (redemption payout), 13 (benchmark), 19 (load structure and FY 2024-25 expenses), 23 (account statements, before the periodic-disclosure table). Skipped: asset allocation, strategy, risk profile, fund manager (dated; the scheme page is current), performance. |
+| `factsheet` | `parse_factsheet()` | For each scheme, the labelled block on its first factsheet page: category, objective, fund managers, inception date, AUM, base expense ratio, benchmark, exit load. Skipped: NAV, risk ratios (standard deviation, beta, Sharpe), portfolio, performance tables. |
+| `statement_guide`, `regulator` | `parse_guide()` | The article body between site-specific start/end markers (header and footer removed), with repeated paragraphs and form-widget labels dropped. |

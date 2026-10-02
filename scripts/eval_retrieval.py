@@ -5,23 +5,36 @@
 from src.retriever import retrieve
 
 # (question, acceptable chunk-id prefixes: any match counts as a hit)
+CAS_CHUNKS = ["hdfc-request-statement"] + [
+    f"kim-hdfc-{s}:account-statements" for s in ("large-cap", "flexi-cap", "elss", "small-cap", "baf")]
 EVAL_SET = [
-    ("What is the expense ratio of HDFC Flexi Cap Fund?", ["hdfc-flexi-cap:key-facts", "hdfc-flexi-cap:scheme-overview"]),
-    ("Expense ratio of HDFC Large Cap Fund?", ["hdfc-large-cap:key-facts", "hdfc-large-cap:scheme-overview"]),
-    ("What is the lock-in period for HDFC ELSS Tax Saver Fund?", ["hdfc-elss:key-facts", "hdfc-elss:minimum-investment"]),
-    ("ELSS lock-in?", ["hdfc-elss:key-facts", "hdfc-elss:minimum-investment"]),
+    # Scheme facts: the scheme page section or facts card
+    ("What is the expense ratio of HDFC Flexi Cap Fund?", ["hdfc-flexi-cap:expense-ratio", "hdfc-flexi-cap:key-facts"]),
+    ("Expense ratio of HDFC Large Cap Fund?", ["hdfc-large-cap:expense-ratio", "hdfc-large-cap:key-facts"]),
+    ("What is the lock-in period for HDFC ELSS Tax Saver Fund?",
+     ["hdfc-elss:key-facts", "hdfc-elss:minimum-investment", "kim-hdfc-elss:type-of-scheme"]),
+    ("ELSS lock-in?", ["hdfc-elss:key-facts", "hdfc-elss:minimum-investment", "kim-hdfc-elss:type-of-scheme"]),
     ("What is the exit load on HDFC Small Cap Fund?", ["hdfc-small-cap:key-facts", "hdfc-small-cap:exit-load"]),
     ("Exit load of HDFC Balanced Advantage Fund?", ["hdfc-baf:key-facts", "hdfc-baf:exit-load"]),
     ("Minimum SIP for HDFC Balanced Advantage Fund?", ["hdfc-baf:key-facts", "hdfc-baf:minimum-investment"]),
     ("Minimum SIP amount for tax saver fund", ["hdfc-elss:key-facts", "hdfc-elss:minimum-investment"]),
     ("Riskometer of HDFC Large Cap?", ["hdfc-large-cap:key-facts", "hdfc-large-cap:riskometer"]),
-    ("What is the benchmark of HDFC Small Cap Fund?", ["hdfc-small-cap:key-facts", "hdfc-small-cap:riskometer"]),
+    ("What is the benchmark of HDFC Small Cap Fund?",
+     ["hdfc-small-cap:key-facts", "hdfc-small-cap:riskometer", "kim-hdfc-small-cap:benchmark"]),
     ("Who manages HDFC Flexi Cap Fund?", ["hdfc-flexi-cap:key-facts", "hdfc-flexi-cap:fund-management"]),
-    ("What is the AUM of HDFC BAF?", ["hdfc-baf:key-facts", "hdfc-baf:scheme-overview"]),
-    ("Stamp duty on HDFC ELSS?", ["hdfc-elss:exit-load"]),
-    ("What is the investment objective of HDFC Small Cap Fund?", ["hdfc-small-cap:investment-objective"]),
-    ("Who is the registrar for HDFC Large Cap Fund?", ["hdfc-large-cap:fund-house-and-registrar"]),
-    ("How are gains taxed for HDFC Flexi Cap?", ["hdfc-flexi-cap:exit-load"]),
+    ("What is the AUM of HDFC BAF?", ["hdfc-baf:key-facts", "hdfc-baf:expense-ratio", "hdfc-factsheet-baf"]),
+    # KIM and factsheet facts
+    ("What is the investment objective of HDFC Small Cap Fund?",
+     ["kim-hdfc-small-cap:investment-objective", "hdfc-factsheet-small-cap", "hdfc-small-cap:about"]),
+    ("Minimum redemption amount for HDFC ELSS?", ["kim-hdfc-elss:minimum-application"]),
+    ("How long does redemption payout take for HDFC Large Cap Fund?", ["kim-hdfc-large-cap:redemption-payout"]),
+    # General questions: HDFC MF service pages, SEBI, AMFI
+    ("How do I download my capital gains statement?", ["hdfc-capital-gains", "hdfc-request-statement"]),
+    ("Is there a fee for the account statement?", ["hdfc-cas"]),
+    ("When is the consolidated account statement sent?", CAS_CHUNKS),
+    ("What is a riskometer?", ["sebi-riskometer"]),
+    ("What is exit load?", ["sebi-exit-load"]),
+    ("What is a lock-in period?", ["amfi-lock-in"]),
 ]
 
 

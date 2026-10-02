@@ -1,6 +1,20 @@
 """Phase 5: map scheme names/aliases in a question to canonical scheme names."""
 import re
 
+# Canonical scheme names -> short slug, category, and the name as printed in the monthly factsheet.
+SCHEMES = {
+    "HDFC Large Cap Fund":          {"slug": "large-cap", "category": "Large Cap",
+                                     "factsheet_title": "HDFC Large Cap Fund"},
+    "HDFC Flexi Cap Fund":          {"slug": "flexi-cap", "category": "Flexi Cap",
+                                     "factsheet_title": "HDFC Flexi Cap Fund"},
+    "HDFC ELSS Tax Saver Fund":     {"slug": "elss", "category": "ELSS",
+                                     "factsheet_title": "HDFC ELSS - Tax Saver Fund"},
+    "HDFC Small Cap Fund":          {"slug": "small-cap", "category": "Small Cap",
+                                     "factsheet_title": "HDFC Small Cap Fund"},
+    "HDFC Balanced Advantage Fund": {"slug": "baf", "category": "Balanced Advantage",
+                                     "factsheet_title": "HDFC Balanced Advantage Fund"},
+}
+
 SCHEME_ALIASES = {
     "HDFC Large Cap Fund": ["hdfc large cap", "large cap", "largecap", "hdfc top 100", "top 100"],
     "HDFC Flexi Cap Fund": ["hdfc flexi cap", "flexi cap", "flexicap", "flexi", "hdfc equity fund"],
@@ -49,9 +63,22 @@ def detect_schemes(question: str) -> list[str]:
     return sorted(found, key=found.get)
 
 
+# "What is an exit load?" asks for a definition (answered from SEBI/AMFI pages), while
+# "What is the exit load?" asks for one scheme's value. "the" is the tell.
+DEFINITION_PAT = re.compile(
+    r"^\s*(?:what\s+(?:is|are)\s+(?!the\b)|define\b|explain\b|meaning\s+of\b|how\s+does\b|how\s+do\b)",
+    re.I,
+)
+
+
+def is_definition(question: str) -> bool:
+    return bool(DEFINITION_PAT.search(question))
+
+
 def needs_scheme(question: str) -> bool:
     text = question.lower()
-    return any(re.search(_pattern(t), text) for t in SCHEME_SPECIFIC_TERMS)
+    return (any(re.search(_pattern(t), text) for t in SCHEME_SPECIFIC_TERMS)
+            and not is_definition(question))
 
 
 def mentions_other_amc(question: str) -> bool:

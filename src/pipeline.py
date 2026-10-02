@@ -18,15 +18,23 @@ from src.schemes import detect_schemes
 AMC_URL = "https://www.hdfcfund.com"  # official AMC site; used when no scheme is named
 
 
+def _with_date(source: dict) -> dict:
+    meta_path = RAW_DIR / f"{source['slug']}.meta.json"
+    fetched = json.loads(meta_path.read_text())["fetched_at"] if meta_path.exists() else None
+    return {"url": source["url"], "fetched_at": fetched}
+
+
 @lru_cache
 def scheme_sources() -> dict[str, dict]:
-    """scheme name -> {url, fetched_at}, from sources.csv + snapshot metadata."""
-    out = {}
-    for s in load_sources():
-        meta_path = RAW_DIR / f"{s['slug']}.meta.json"
-        fetched = json.loads(meta_path.read_text())["fetched_at"] if meta_path.exists() else None
-        out[s["scheme"]] = {"url": s["url"], "fetched_at": fetched}
-    return out
+    """scheme name -> {url, fetched_at} of its official scheme page (sources.csv + snapshot metadata)."""
+    return {s["scheme"]: _with_date(s) for s in load_sources() if s["source_type"] == "scheme_page"}
+
+
+@lru_cache
+def factsheet_source() -> dict:
+    """{url, fetched_at} of the official monthly factsheet; performance questions link here."""
+    return next((_with_date(s) for s in load_sources() if s["source_type"] == "factsheet"),
+                {"url": AMC_URL, "fetched_at": None})
 
 
 def scheme_link(question: str) -> tuple[str | None, str | None]:
@@ -47,8 +55,8 @@ def answer(question: str) -> Response:
     if kind == "pii":
         return Response("pii_block", templates.PII_BLOCK)
     if kind == "performance":
-        url, updated = scheme_link(question)  # the scheme page links to its factsheet data
-        return Response("performance", templates.PERFORMANCE, url or AMC_URL, updated)
+        fs = factsheet_source()  # brief: "link to the official factsheet if asked"
+        return Response("performance", templates.PERFORMANCE, fs["url"], fs["fetched_at"])
     if kind == "advice":
         return Response("advice", templates.ADVICE, templates.EDU_LINK)
     if kind == "off_topic":
