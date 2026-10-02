@@ -269,7 +269,8 @@ def brand() -> str:
 def hero() -> str:
     return (f'<section class="hero"><div class="orb"></div>'
             f'<h1>What can I tell you about <span class="grad">your funds?</span></h1>'
-            f'<p class="sub">Ask me facts about 5 HDFC Mutual Fund schemes.</p></section>')
+            f'<p class="sub">Ask me facts about 5 HDFC Mutual Fund schemes, your statements, '
+            f'and mutual fund basics.</p></section>')
 
 
 def disclaimer() -> str:
@@ -280,15 +281,23 @@ def user_message(text: str, hidden: bool = False) -> str:
     return f'<div class="msg-user"><div class="bubble{" hidden" if hidden else ""}">{html.escape(text)}</div></div>'
 
 
+def source_label(url: str) -> str:
+    """'hdfcfund.com' for pages; 'hdfcfund.com · KIM (PDF)' for documents on HDFC's file server."""
+    host = urlparse(url).netloc.replace("www.", "").replace("files.", "")
+    if not url.lower().endswith(".pdf"):
+        return host
+    kind = "KIM" if "/KIM/" in url else "Factsheet" if "Factsheet" in url else "document"
+    return f"{host} · {kind} (PDF)"
+
+
 def bot_message(resp) -> str:
     label, tone = KIND_BADGES.get(resp.kind, ("Answer", "accent"))
     meta = ""
     if resp.citation_url or resp.last_updated:
         parts = []
         if resp.citation_url:
-            host = urlparse(resp.citation_url).netloc.replace("www.", "")
             parts.append(f'<a class="src" href="{html.escape(resp.citation_url)}" target="_blank" '
-                         f'rel="noopener">{icon("external", 13)} Source · {html.escape(host)}</a>')
+                         f'rel="noopener">{icon("external", 13)} Source · {html.escape(source_label(resp.citation_url))}</a>')
         if resp.last_updated:
             parts.append(f'<span class="updated">{icon("clock", 13)} Last updated from sources: '
                          f'{html.escape(resp.last_updated)}</span>')

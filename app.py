@@ -4,7 +4,8 @@ import streamlit as st
 from src import ui
 from src.embedder import embed
 from src.guardrails import contains_pii
-from src.pipeline import answer, scheme_sources
+from src.loader import load_sources
+from src.pipeline import answer
 from src.store import get_collection
 
 st.set_page_config(page_title="HDFC MF Facts Assistant", page_icon="🛡️", layout="wide")
@@ -16,6 +17,14 @@ EXAMPLES = [
     ("How do I download my capital gains statement?", ":material/receipt_long:"),
 ]
 PII_PLACEHOLDER = "Message hidden — it contained personal data"
+# Popover groups: (heading, source_type, show inline as "a · b · c" instead of a bullet list)
+SOURCE_GROUPS = [
+    ("Schemes covered (Direct – Growth)", "scheme_page", False),
+    ("Key Information Memoranda (PDF)", "kim", True),
+    ("Factsheet (PDF)", "factsheet", False),
+    ("Statement guides", "statement_guide", False),
+    ("Investor education", "regulator", False),
+]
 
 
 @st.cache_resource(show_spinner="Loading knowledge base…")
@@ -54,13 +63,13 @@ with st.container(key="topbar"):
                                                                 vertical_alignment="center")
     brand_col.markdown(ui.brand(), unsafe_allow_html=True)
     with schemes_col:
-        with st.popover("5 schemes covered", icon=":material/account_balance:"):
-            st.markdown("**Schemes covered** (Direct – Growth)")
-            for scheme, src in scheme_sources().items():
-                st.markdown(f"- [{scheme}]({src['url']})")
-            st.caption("Answers come only from official HDFC Mutual Fund pages, KIMs and factsheet, "
-                       "plus SEBI and AMFI investor-education pages ([full source list]"
-                       "(https://github.com/sanchaybagul/mutual-fund-faq-chatbot/blob/main/sources.md)).")
+        sources = load_sources()
+        with st.popover(f"5 schemes · {len(sources)} sources", icon=":material/account_balance:"):
+            for heading, source_type, inline in SOURCE_GROUPS:
+                links = [f"[{s['title']}]({s['url']})" for s in sources if s["source_type"] == source_type]
+                st.markdown(f"**{heading}**\n\n" + (" · ".join(links) if inline else
+                                                      "\n".join(f"- {link}" for link in links)))
+            st.caption("Answers come only from these official HDFC Mutual Fund, SEBI and AMFI pages.")
     with toggle_col:
         with st.container(key="theme_toggle"):
             st.toggle("Dark mode", key="dark")
@@ -94,7 +103,7 @@ if chatting:
 with st.form("ask", clear_on_submit=True, border=False):
     q_col, send_col = st.columns([12, 1], vertical_alignment="center")
     q_col.text_input("Question", key="q_input", label_visibility="collapsed",
-                    placeholder="Ask about expense ratio, exit load, minimum SIP, lock-in, riskometer…")
+                    placeholder="Ask about expense ratio, exit load, minimum SIP, lock-in, statements…")
     with send_col:
         st.form_submit_button("↑", on_click=on_submit, help="Ask")
 st.markdown(ui.disclaimer(), unsafe_allow_html=True)

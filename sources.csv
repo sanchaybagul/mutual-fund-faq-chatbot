@@ -1,19 +1,19 @@
-slug,scheme,category,source_type,url
-hdfc-large-cap,HDFC Large Cap Fund,Large Cap,scheme_page,https://www.hdfcfund.com/explore/mutual-funds/hdfc-large-cap-fund/direct
-hdfc-flexi-cap,HDFC Flexi Cap Fund,Flexi Cap,scheme_page,https://www.hdfcfund.com/explore/mutual-funds/hdfc-flexi-cap-fund/direct
-hdfc-elss,HDFC ELSS Tax Saver Fund,ELSS,scheme_page,https://www.hdfcfund.com/explore/mutual-funds/hdfc-elss-tax-saver/direct
-hdfc-small-cap,HDFC Small Cap Fund,Small Cap,scheme_page,https://www.hdfcfund.com/explore/mutual-funds/hdfc-small-cap-fund/direct
-hdfc-baf,HDFC Balanced Advantage Fund,Balanced Advantage,scheme_page,https://www.hdfcfund.com/explore/mutual-funds/hdfc-balanced-advantage-fund/direct
-kim-hdfc-large-cap,HDFC Large Cap Fund,Large Cap,kim,https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20Large%20Cap%20Fund%20dated%20November%2021%2C%202025_0.pdf
-kim-hdfc-flexi-cap,HDFC Flexi Cap Fund,Flexi Cap,kim,https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20Flexi%20Cap%20Fund%20dated%20November%2021%2C%202025_0.pdf
-kim-hdfc-elss,HDFC ELSS Tax Saver Fund,ELSS,kim,https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20ELSS%20Tax%20Saver%20dated%20November%2021%2C%202025_0.pdf
-kim-hdfc-small-cap,HDFC Small Cap Fund,Small Cap,kim,https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20Small%20Cap%20Fund%20dated%20November%2021%2C%202025_0.pdf
-kim-hdfc-baf,HDFC Balanced Advantage Fund,Balanced Advantage,kim,https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20Balanced%20Advantage%20Fund%20dated%20November%2021%2C%202025_0.pdf
-hdfc-factsheet,,General,factsheet,https://files.hdfcfund.com/s3fs-public/2026-09/HDFC%20MF%20Factsheet%20-%20August%202026.pdf
-hdfc-cas,,General,statement_guide,https://www.hdfcfund.com/services/consolidated-account-statement
-hdfc-request-statement,,General,statement_guide,https://www.hdfcfund.com/services/additional-info/request-statement
-hdfc-capital-gains,,General,statement_guide,https://www.hdfcfund.com/learn/blog/how-get-capital-gain-statement-mutual-fund-schemes-india
-sebi-riskometer,,General,regulator,https://investor.sebi.gov.in/riskometer.html
-sebi-exit-load,,General,regulator,https://investor.sebi.gov.in/exit_load.html
-sebi-understanding-mf,,General,regulator,https://investor.sebi.gov.in/understanding_mf.html
-amfi-lock-in,,General,regulator,https://www.mutualfundssahihai.com/en/what-is-lock-in-period
+slug,scheme,category,source_type,title,url
+hdfc-large-cap,HDFC Large Cap Fund,Large Cap,scheme_page,HDFC Large Cap Fund,https://www.hdfcfund.com/explore/mutual-funds/hdfc-large-cap-fund/direct
+hdfc-flexi-cap,HDFC Flexi Cap Fund,Flexi Cap,scheme_page,HDFC Flexi Cap Fund,https://www.hdfcfund.com/explore/mutual-funds/hdfc-flexi-cap-fund/direct
+hdfc-elss,HDFC ELSS Tax Saver Fund,ELSS,scheme_page,HDFC ELSS Tax Saver Fund,https://www.hdfcfund.com/explore/mutual-funds/hdfc-elss-tax-saver/direct
+hdfc-small-cap,HDFC Small Cap Fund,Small Cap,scheme_page,HDFC Small Cap Fund,https://www.hdfcfund.com/explore/mutual-funds/hdfc-small-cap-fund/direct
+hdfc-baf,HDFC Balanced Advantage Fund,Balanced Advantage,scheme_page,HDFC Balanced Advantage Fund,https://www.hdfcfund.com/explore/mutual-funds/hdfc-balanced-advantage-fund/direct
+kim-hdfc-large-cap,HDFC Large Cap Fund,Large Cap,kim,Large Cap,https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20Large%20Cap%20Fund%20dated%20November%2021%2C%202025_0.pdf
+kim-hdfc-flexi-cap,HDFC Flexi Cap Fund,Flexi Cap,kim,Flexi Cap,https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20Flexi%20Cap%20Fund%20dated%20November%2021%2C%202025_0.pdf
+kim-hdfc-elss,HDFC ELSS Tax Saver Fund,ELSS,kim,ELSS Tax Saver,https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20ELSS%20Tax%20Saver%20dated%20November%2021%2C%202025_0.pdf
+kim-hdfc-small-cap,HDFC Small Cap Fund,Small Cap,kim,Small Cap,https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20Small%20Cap%20Fund%20dated%20November%2021%2C%202025_0.pdf
+kim-hdfc-baf,HDFC Balanced Advantage Fund,Balanced Advantage,kim,Balanced Advantage,https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20Balanced%20Advantage%20Fund%20dated%20November%2021%2C%202025_0.pdf
+hdfc-factsheet,,General,factsheet,HDFC MF Factsheet – August 2026,https://files.hdfcfund.com/s3fs-public/2026-09/HDFC%20MF%20Factsheet%20-%20August%202026.pdf
+hdfc-cas,,General,statement_guide,Download account statement,https://www.hdfcfund.com/services/consolidated-account-statement
+hdfc-request-statement,,General,statement_guide,Request a statement,https://www.hdfcfund.com/services/additional-info/request-statement
+hdfc-capital-gains,,General,statement_guide,How to get a capital gain statement,https://www.hdfcfund.com/learn/blog/how-get-capital-gain-statement-mutual-fund-schemes-india
+sebi-riskometer,,General,regulator,SEBI – Understanding the Riskometer,https://investor.sebi.gov.in/riskometer.html
+sebi-exit-load,,General,regulator,SEBI – Exit Load,https://investor.sebi.gov.in/exit_load.html
+sebi-understanding-mf,,General,regulator,SEBI – Understanding Mutual Funds,https://investor.sebi.gov.in/understanding_mf.html
+amfi-lock-in,,General,regulator,AMFI – What is a lock-in period?,https://www.mutualfundssahihai.com/en/what-is-lock-in-period

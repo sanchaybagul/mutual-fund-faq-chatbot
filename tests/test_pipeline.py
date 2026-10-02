@@ -110,6 +110,7 @@ def test_7_ui_elements_present():
     assert not at.exception
     page = " ".join(m.value for m in at.markdown)
     assert "Ask me facts about 5 HDFC Mutual Fund schemes" in page          # welcome line
+    assert at.get("popover")[0].proto.popover.label == "5 schemes · 18 sources"  # source list
     assert "Facts-only. No investment advice." in page                      # disclaimer
     examples = [b for b in at.button if b.key and b.key.startswith("ex_")]
     assert len(examples) >= 3                                               # example questions

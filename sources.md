@@ -47,7 +47,7 @@ All sources are official AMC / regulator pages. No third-party aggregators or bl
 | 17 | SEBI | Understanding Mutual Funds | https://investor.sebi.gov.in/understanding_mf.html |
 | 18 | AMFI (Mutual Funds Sahi Hai) | What is a lock-in period | https://www.mutualfundssahihai.com/en/what-is-lock-in-period |
 
-Machine-readable version: [`sources.csv`](sources.csv) (`source_type`: `scheme_page`, `kim`, `factsheet`, `statement_guide`, `regulator`).
+Machine-readable version: [`sources.csv`](sources.csv) (`source_type`: `scheme_page`, `kim`, `factsheet`, `statement_guide`, `regulator`; `title` is the label shown in the app).
 
 Links used in responses but not ingested into the corpus:
 
