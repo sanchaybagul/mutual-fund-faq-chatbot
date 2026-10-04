@@ -4,6 +4,7 @@ Flow: guardrails → scheme-aware retrieval → Groq LLM → post-processing.
 Nothing here logs or stores the user's question.
 """
 import json
+import logging
 from functools import lru_cache
 
 from src import templates
@@ -14,6 +15,8 @@ from src.loader import load_sources
 from src.postprocess import Response, finalize
 from src.retriever import retrieve
 from src.schemes import detect_schemes
+
+log = logging.getLogger(__name__)
 
 AMC_URL = "https://www.hdfcfund.com"  # official AMC site; used when no scheme is named
 
@@ -70,7 +73,8 @@ def answer(question: str) -> Response:
 
     try:
         raw = generate(question, r.chunks)
-    except GenerationError:
+    except GenerationError as e:
+        log.error("Generation failed: %s", e)  # the error only, never the question
         return Response("error", templates.SERVICE_ERROR)
     resp = finalize(raw, r.chunks)
     # finalize() cites the top chunk; for a scheme-less question that chunk is arbitrary.
